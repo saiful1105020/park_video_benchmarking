@@ -5,6 +5,7 @@ import copy
 import click
 import wandb
 import random
+import pandas as pd
 
 import numpy as np
 
@@ -101,6 +102,68 @@ class TensorDataset(Dataset):
         self.ids = df["unique_id"]
         self.labels = df["label"]
         self.features = df["features"]
+    
+    def __getitem__(self, index):
+        uid = self.ids.iloc[index]
+        x = self.features.iloc[index]
+        y = self.labels.iloc[index]
+        return uid, x, y
+    
+    def __len__(self):
+        return len(self.labels)
+    
+class TensorDatasetLR(Dataset):
+    '''
+    Standard dataloader for this specific single-view embeddings.
+    Columns: ['file_name', 'pid', 'task', 'protocol', 'label', 'file_path', 'unique_id', 'features']
+    '''
+    def __init__(self, df):
+        df_both_hands = df[(~(df["file_name"].str.contains("left"))) & (~df["file_name"].str.contains("right"))]
+        df_single_hand = df[(df["file_name"].str.contains("left")) | df["file_name"].str.contains("right")]
+        # df_single_hand.to_csv("single_hand_files.csv", index=False)
+
+        indexes_to_remove = []
+
+        for idx, row in df_single_hand.iterrows():
+            # Skip if this index is already matched
+            if idx in indexes_to_remove:
+                continue
+
+            if "left" in row["file_name"]:
+                corresponding_file = row["file_name"].replace("left", "right")
+            elif "right" in row["file_name"]:
+                corresponding_file = row["file_name"].replace("right", "left")
+            else:
+                assert False
+            
+            matched_rows = df_single_hand[df_single_hand["file_name"]==corresponding_file]
+            if len(matched_rows)==1:
+                matched_row = matched_rows.iloc[0]
+                # average the features
+                avg_feature = (row["features"] + matched_row["features"])/2.0
+                df_single_hand.at[idx, "features"] = avg_feature
+                df_single_hand.at[idx, "file_name"] = row["file_name"].replace("_left", "_merged").replace("_right", "_merged")
+
+                # mark the matched index for deletion later
+                matched_index = matched_rows.index[0]
+                indexes_to_remove.append(matched_index)
+
+            # otherwise, we just keep the original feature (no averaging)
+
+        df_single_hand = df_single_hand.drop(index=indexes_to_remove).reset_index(drop=True)
+        # df_single_hand.to_csv("single_hand_files_after_merging.csv", index=False)
+
+        df = pd.concat([df_both_hands, df_single_hand]).reset_index(drop=True)
+
+        self.ids = df["unique_id"]
+        self.labels = df["label"]
+        self.features = df["features"]
+
+        # Sanity check
+        # df1 = pd.read_csv("single_hand_files.csv")
+        # df2 = pd.read_csv("single_hand_files_after_merging.csv")
+        # print(f"Number of single-hand files before merging: {len(df1)}")
+        # print(f"Number of single-hand files after merging: {len(df2)}")
     
     def __getitem__(self, index):
         uid = self.ids.iloc[index]
@@ -274,10 +337,15 @@ def main(**cfg):
     # print(dataset_df["dev"].iloc[0])
     # print(dataset_df["train"].iloc[101]["features"].dtype) # torch.float32
     # print(dataset_df["train"].iloc[101]["features"].shape) # torch.Size([768])
-    
-    train_dataset = TensorDataset(df=dataset_df["train"])
-    dev_dataset = TensorDataset(df=dataset_df["dev"])
-    test_dataset = TensorDataset(df=dataset_df["test"])
+
+    if cfg["task_name"] in ["finger_tapping", "flip_palm", "nose_touch", "open_fist"]:
+        train_dataset = TensorDatasetLR(df=dataset_df["train"])
+        dev_dataset = TensorDatasetLR(df=dataset_df["dev"])
+        test_dataset = TensorDatasetLR(df=dataset_df["test"])
+    else:
+        train_dataset = TensorDataset(df=dataset_df["train"])
+        dev_dataset = TensorDataset(df=dataset_df["dev"])
+        test_dataset = TensorDataset(df=dataset_df["test"])
     # print(len(train_dataset))   # 753
     # uid, x, y = train_dataset[0]
     # print(x.shape)  # torch.Size([768])
