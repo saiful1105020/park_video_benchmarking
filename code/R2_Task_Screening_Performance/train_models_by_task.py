@@ -16,6 +16,10 @@ from tqdm import tqdm
 
 import matplotlib.pyplot as plt
 
+os.makedirs("/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/", exist_ok=True)
+sys.stdout.flush()
+sys.stdout=open("/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/train_models_by_task_dryrun_temp.log", "wt")
+
 from models import *
 
 # task_name_mapping = {
@@ -222,7 +226,7 @@ def training_loop(train_loader, dev_loader, model, optimizer, scheduler, criteri
             n_total += len(labels)
             
             labels = labels.float().to(device)  #(n, )
-            features = features.to(device)      #(n, d)
+            features = features.float().to(device)      #(n, d)
 
             predicted_probs = model(features)   #(n, 1)
             l = criterion(predicted_probs.reshape(-1), labels)
@@ -275,6 +279,7 @@ def training_loop(train_loader, dev_loader, model, optimizer, scheduler, criteri
 
     return best_model, training_metrics, dev_metrics
 
+# Comment the click decorators for unit testing
 @click.command()
 @click.option("--task_name", default="sustained_phonation_a", help="Options: see task lists")
 @click.option("--num_epochs", default=82)
@@ -298,6 +303,7 @@ def training_loop(train_loader, dev_loader, model, optimizer, scheduler, criteri
 @click.option("--enable_wandb", default=False)
 def main(**cfg):
     assert cfg["task_name"] in valid_tasks, f"Invalid task name. Valid options are: {valid_tasks}"
+    assert cfg["model"] in model_embedding_paths.keys(), f"Invalid model name. Valid options are: {list(model_embedding_paths.keys())}"
 
     # need to setup wandb and hyper-parameter tuning
     ENABLE_WANDB = cfg["enable_wandb"]
@@ -412,7 +418,43 @@ def main(**cfg):
     # save the model
     # after we find out the best configuration
 
+def unit_test():
+    for task in valid_tasks:
+        for model_name in model_embedding_paths.keys():
+            print(f"Training for task: {task}, model: {model_name}")
+            config = {
+                "task_name": task,
+                "num_epochs": 20,
+                "batch_size": 256,
+                "hidden_dim": 512,
+                "drop_prob": 0.5,
+                "optimizer":"AdamW",
+                "learning_rate":0.00001,
+                "momentum":0.9,
+                "use_scheduler":"no",
+                "scheduler":"step",
+                "step_size":11,
+                "gamma":0.8808588244592819,
+                "patience":3,
+                "detailed_logs":False,
+                "model": model_name,
+                "pooling":"mean",
+                "num_views":1,
+                "view_index":0,
+                "seed":42,
+                "enable_wandb":False
+            }
+            main(**config)
+            print("SUCCESS")
+            print("=========================================")
+
 if __name__ == "__main__":
+    # unit_test()
     main()
+
+    # End of program
+    sys.stdout.close()
+    sys.stdout = sys.__stdout__
+    os.rename("/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/train_models_by_task_dryrun_temp.log", "/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/train_models_by_task_dryrun.log")
         
     

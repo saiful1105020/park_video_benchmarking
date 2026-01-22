@@ -16,15 +16,15 @@ Task names found in dataset: ['ahhhh' 'disgust' 'eeeee' 'extend_arm' 'eye_gaze' 
  'nose_touch_left' 'nose_touch_right' 'ooooo' 'open_fist_left'
  'open_fist_right' 'quick_brown_fox' 'resting_face' 'reverse_count'
  'smile' 'surprise' 'tongue_twister' 'finger_tapping' 'flip_palm'
- 'nose_touch' 'open_fist' 'resting_tremor' 'speech']
-[METADATA] Number of videos after filtering tasks: 36968
+ 'nose_touch' 'open_fist']
+[METADATA] Number of videos after filtering tasks: 35964
 ----------------------------------------
 
 
 Number of existing videos in folder: 37791
-Number of filenames in metadata: 36968
-Number of missing videos: 1821
-[METADATA] Number of videos after filtering non-existing videos: 35147
+Number of filenames in metadata: 35964
+Number of missing videos: 1703
+[METADATA] Number of videos after filtering non-existing videos: 34261
 ----------------------------------------
 
 
@@ -53,10 +53,10 @@ Number of videos for protocol SuperPD_old: 4244
 Number of videos for protocol ValorPD: 4636
 Number of videos for protocol ClusterPD: 1658
 Number of videos for protocol InMotion: 3565
-Number of videos for protocol RoutePD: 4118
-Number of videos for protocol ValidationStudy: 1821
+Number of videos for protocol RoutePD: 3306
+Number of videos for protocol ValidationStudy: 1747
 Number of videos for protocol ParkTest: 14072
-Total videos counted: 35147
+Total videos counted: 34261
 ----------------------------------------
 
 

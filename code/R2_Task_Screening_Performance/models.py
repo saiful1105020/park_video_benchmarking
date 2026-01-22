@@ -11,6 +11,7 @@ class SingleViewLinearProbe(nn.Module):
         self.sig = nn.Sigmoid()
  
     def forward(self, x):
+        x = x.float()
         x1 = self.hidden_activation(self.fc1(x))
         x1 = self.drop(x1)
         y = self.fc2(x1)

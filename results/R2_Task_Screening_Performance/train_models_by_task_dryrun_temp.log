@@ -1,0 +1,15 @@
+Device: cuda
+Valid tasks are:
+['sustained_phonation_a', 'sustained_phonation_e', 'sustained_phonation_o', 'facial_expression_disgust', 'facial_expression_smile', 'facial_expression_surprise', 'extend_arm', 'eye_gaze', 'finger_tapping', 'flip_palm', 'head_pose', 'nose_touch', 'open_fist', 'pangram_utterance', 'resting_face', 'reverse_count', 'tongue_twister', 'resting_tremor', 'free_flow_speech']
+Training for task: free_flow_speech, model: ViViT
+Number of files with metadata and raw videos: 486
+Size of training set: 485 videos, 97 participants
+Size of validation set: 0 videos, 0 participants
+Size of test set: 1 videos, 1 participants
+Task name: free_flow_speech
+Number of files with embedding: 36792
+Number of train files with embedding: 483
+Number of dev files with embedding: 0
+Number of test files with embedding: 1
+Total number of files with embedding: 484, PD: 378, Non-PD: 106
+[]

@@ -35,6 +35,30 @@ max_age = 90
 #  'open_fist_right' 'quick_brown_fox' 'resting_face' 'reverse_count'
 #  'smile' 'surprise' 'tongue_twister' 'finger_tapping' 'flip_palm'
 #  'nose_touch' 'open_fist' 'resting_tremor' 'speech']
+
+# Had to exclude 'resting_tremor' and 'speech' tasks due to insufficient data
+# task_name_mapping = {
+#     'Sustained Phonation (A)': ['ahhhh'],
+#     'Sustained Phonation (E)': ['eeeee'],
+#     'Sustained Phonation (O)': ['ooooo'],
+#     'Facial Expression (Disgust)': ['disgust'],
+#     'Facial Expression (Smile)': ['smile'],
+#     'Facial Expression (Surprise)': ['surprise'],
+#     'Extend Arm': ['extend_arm'],
+#     'Eye Gaze': ['eye_gaze'],
+#     'Finger Tapping': ['finger_tapping', 'finger_tapping_left', 'finger_tapping_right'],
+#     'Flip Palm': ['flip_palm', 'flip_palm_left', 'flip_palm_right'],
+#     'Head Pose': ['head pose'],
+#     'Nose Touch': ['nose_touch', 'nose_touch_left', 'nose_touch_right'],
+#     'Open Fist': ['open_fist', 'open_fist_left', 'open_fist_right'],
+#     'Pangram Utterance': ['quick_brown_fox'],
+#     'Resting Face': ['resting_face'],
+#     'Reverse Count': ['reverse_count'],
+#     'Tongue Twister': ['tongue_twister'],
+#     'Resting Tremor': ['resting_tremor'],
+#     'Free Flow Speech': ['speech']
+# }
+
 task_name_mapping = {
     'Sustained Phonation (A)': ['ahhhh'],
     'Sustained Phonation (E)': ['eeeee'],
@@ -53,8 +77,6 @@ task_name_mapping = {
     'Resting Face': ['resting_face'],
     'Reverse Count': ['reverse_count'],
     'Tongue Twister': ['tongue_twister'],
-    'Resting Tremor': ['resting_tremor'],
-    'Free Flow Speech': ['speech']
 }
 
 sex_mapping = {
@@ -184,7 +206,7 @@ def clean_data():
     #  'nose_touch' 'open_fist' 'task1' 'resting_tremor' 'speech' 'task16'
     #  'task14' 'task15'
     data_df = data_df[~data_df["Task"].isin([
-        'task1', 'task14', 'task15', 'task16'
+        'task1', 'task14', 'task15', 'task16', 'resting_tremor', 'speech'
         ])]
     task_names = data_df["Task"].unique()
     print(f"Task names found in dataset: {task_names}")
