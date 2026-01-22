@@ -17,7 +17,7 @@ def compute_metrics(y_pred_scores, y_true, threshold = 0.5):
     pred_scores = np.asarray(y_pred_scores).reshape(-1)
     preds = (pred_scores >= threshold)
 
-    print(preds)
+    # print(preds)
  
     metrics = {}
     metrics['accuracy'] = accuracy_score(labels, preds)

@@ -16,9 +16,9 @@ from tqdm import tqdm
 
 import matplotlib.pyplot as plt
 
-os.makedirs("/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/", exist_ok=True)
-sys.stdout.flush()
-sys.stdout=open("/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/train_models_by_task_dryrun_temp.log", "wt")
+# os.makedirs("/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/", exist_ok=True)
+# sys.stdout.flush()
+# sys.stdout=open("/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/train_models_by_task_dryrun_temp.log", "wt")
 
 from models import *
 
@@ -300,7 +300,7 @@ def training_loop(train_loader, dev_loader, model, optimizer, scheduler, criteri
 @click.option("--num_views", default=1)
 @click.option("--view_index", default=0)
 @click.option("--seed", default=42)
-@click.option("--enable_wandb", default=False)
+@click.option("--enable_wandb", default=True)
 def main(**cfg):
     assert cfg["task_name"] in valid_tasks, f"Invalid task name. Valid options are: {valid_tasks}"
     assert cfg["model"] in model_embedding_paths.keys(), f"Invalid model name. Valid options are: {list(model_embedding_paths.keys())}"
@@ -453,8 +453,8 @@ if __name__ == "__main__":
     main()
 
     # End of program
-    sys.stdout.close()
-    sys.stdout = sys.__stdout__
-    os.rename("/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/train_models_by_task_dryrun_temp.log", "/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/train_models_by_task_dryrun.log")
+    # sys.stdout.close()
+    # sys.stdout = sys.__stdout__
+    # os.rename("/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/train_models_by_task_dryrun_temp.log", "/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/train_models_by_task_dryrun.log")
         
     
