@@ -3,7 +3,7 @@ import numpy as np
 import os, sys
 import random
 
-wandb_results_path = "/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/wandb_results/wandb_export_2026-01-22T16_36_52.255-05_00.csv"
+wandb_results_path = "/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/wandb_results/wandb_runs_summary_v1.csv"
 summary_results_path = "/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/wandb_results/summary_best_models_per_task.csv"
 
 model_name_for_display = {
@@ -34,11 +34,12 @@ def summarize_wandb_results(wandb_results_path):
             "Best Model": model_name_for_display[best_row["model"]],
             "Accuracy": best_row["test_accuracy"],
             "Sensitivity": best_row["test_recall"],
-            "Specificity": best_row["Name"],
+            "Specificity": best_row["name"],
             "PPV": best_row["test_precision"],
-            "NPV": best_row["Name"],
+            "NPV": best_row["name"],
             "AUC": best_row["test_auroc"],
-            "Test Samples": best_row["Name"],
+            "Test Samples": best_row["name"],
+            "Test Positives": best_row["name"],
         }
         summary_rows.append(summary_row)
     
@@ -46,11 +47,11 @@ def summarize_wandb_results(wandb_results_path):
     return summary_df
 
 if __name__ == "__main__":
-    # Stage 1
-    summary_df = summarize_wandb_results(wandb_results_path)
-    print("Summary of Best Models per Task:")
-    print(summary_df)
-    summary_df.to_csv(summary_results_path, index=False)
+    # # Stage 1
+    # summary_df = summarize_wandb_results(wandb_results_path)
+    # print("Summary of Best Models per Task:")
+    # print(summary_df)
+    # summary_df.to_csv(summary_results_path, index=False)
 
     # assert False
     # At this step, some manual extraction is needed from the wandb logs to fill in missing metrics
@@ -61,11 +62,11 @@ if __name__ == "__main__":
     # Stage 2
     summary_df = pd.read_csv(summary_results_path)
 
-    # These are dummy replacements for missing values for demonstration purposes
-    summary_df["Specificity"] = summary_df["Specificity"].apply(lambda x: random.uniform(0.7, 0.9))
-    summary_df["NPV"] = summary_df["NPV"].apply(lambda x: random.uniform(0.4, 0.9))
-    summary_df["Test Samples"] = summary_df["Test Samples"].apply(lambda x: random.randint(50, 200))
-    # These dummy values should be replaced with actual extracted values from wandb logs
+    # # These are dummy replacements for missing values for demonstration purposes
+    # summary_df["Specificity"] = summary_df["Specificity"].apply(lambda x: random.uniform(0.7, 0.9))
+    # summary_df["NPV"] = summary_df["NPV"].apply(lambda x: random.uniform(0.4, 0.9))
+    # summary_df["Test Samples"] = summary_df["Test Samples"].apply(lambda x: random.randint(50, 200))
+    # # These dummy values should be replaced with actual extracted values from wandb logs
 
     for i, r in summary_df.iterrows():
         n = r["Test Samples"]
@@ -83,7 +84,7 @@ if __name__ == "__main__":
 
     print("Final Summary with 95% CIs:")
     print(summary_df)
-    summary_df.drop(columns=["Test Samples"], inplace=True)
+    summary_df.drop(columns=["Test Samples", "Test Positives"], inplace=True)
     summary_df.sort_values(by=["Task"], inplace=True)
     summary_df.to_csv(summary_results_path.replace(".csv", "_with_CI.csv"), index=False)
     latex_code = summary_df.to_latex(

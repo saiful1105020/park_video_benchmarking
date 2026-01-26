@@ -56,10 +56,10 @@ for sweep_id in sweep_ids:
             final_df = pd.concat([runs_df[['name']], config_df, summary_df], axis=1)
 
             # Export to CSV
-            final_df.to_csv("/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/wandb_results/wandb_runs_summary_v1.csv", index=False)
+            final_df.to_csv("/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/wandb_results/wandb_runs_summary_all_runs.csv", index=False)
             
-            # We only need the best 1000 runs, discard the rest to save memory
-            break
+            # # We only need the best 1000 runs, discard the rest to save memory
+            # break
 
-final_df.to_csv("/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/wandb_results/wandb_runs_summary_v1.csv", index=False)        
+final_df.to_csv("/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/wandb_results/wandb_runs_summary_all_runs.csv", index=False)        
 print("Done logging for all sweeps!")

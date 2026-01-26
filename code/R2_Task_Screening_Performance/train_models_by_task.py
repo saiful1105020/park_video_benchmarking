@@ -413,6 +413,11 @@ def main(**cfg):
     wandb_logs["test_recall"] = test_metrics["recall"]
     wandb_logs["test_auroc"] = test_metrics["auroc"]
     wandb_logs["test_f1_score"] = test_metrics["f1_score"]
+    wandb_logs["test_specificity"] = test_metrics["specificity"]
+    wandb_logs["test_npv"] = test_metrics["npv"]
+    wandb_logs["test_samples"] = test_metrics["confusion_matrix"]["tp"] + test_metrics["confusion_matrix"]["tn"] + test_metrics["confusion_matrix"]["fp"] + test_metrics["confusion_matrix"]["fn"]
+    wandb_logs["test_positives"] = test_metrics["confusion_matrix"]["tp"] + test_metrics["confusion_matrix"]["fn"]
+
     if ENABLE_WANDB:
         wandb.log(wandb_logs)
     # save the model
