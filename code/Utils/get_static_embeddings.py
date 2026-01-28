@@ -18,7 +18,9 @@ model_embedding_paths_multiview = {
     4: {
         "ViViT": "/localdisk1/PARK/park_video_benchmarking/data/multi_view_embeddings/ViViT/ViViT_4views_2stride_Features_All_PARK_Videos.pkl",
         "VideoMAE": "/localdisk1/PARK/park_video_benchmarking/data/multi_view_embeddings/VideoMAE/VideoMAE_4views_2stride_Features_All_PARK_Videos.pkl",
-        "TimeSformer": "/localdisk1/PARK/park_video_benchmarking/data/multi_view_embeddings/TimeSformer/TimeSformer_4views_2stride_Features_All_PARK_Videos.pkl"
+        "TimeSformer": "/localdisk1/PARK/park_video_benchmarking/data/multi_view_embeddings/TimeSformer/TimeSformer_4views_2stride_Features_All_PARK_Videos.pkl",
+        "VideoPrism": "/localdisk1/PARK/park_video_benchmarking/data/multi_view_embeddings/VideoPrism/VideoPrism_4views_2stride_Features_All_PARK_Videos.pkl",
+        "VJEPA2": "/localdisk1/PARK/park_video_benchmarking/data/multi_view_embeddings/VJEPA2/VJEPA2_basic_4views_2stride_Features_All_PARK_Videos.pkl"
     }
 }
 
@@ -61,9 +63,15 @@ def get_all_static_embeddings(model, num_views=1, view_index=0, pooling="mean"):
                 df_features = pd.DataFrame.from_dict(loaded_data)
 
                 if pooling == "mean":
-                    df_features["features"] = df_features.apply(lambda x: torch.stack([x.view_0_mean_pooled_embedding, x.view_1_mean_pooled_embedding, x.view_2_mean_pooled_embedding, x.view_3_mean_pooled_embedding]), axis=1)
+                    if model == "VideoPrism":
+                        df_features["features"] = df_features.apply(lambda x: torch.stack([torch.tensor(x.view_0_mean_pooled_embedding), torch.tensor(x.view_1_mean_pooled_embedding), torch.tensor(x.view_2_mean_pooled_embedding), torch.tensor(x.view_3_mean_pooled_embedding)]), axis=1)
+                    else:
+                        df_features["features"] = df_features.apply(lambda x: torch.stack([x.view_0_mean_pooled_embedding, x.view_1_mean_pooled_embedding, x.view_2_mean_pooled_embedding, x.view_3_mean_pooled_embedding]), axis=1)
                 elif pooling == "max":
-                    df_features["features"] = df_features.apply(lambda x: torch.stack([x.view_0_max_pooled_embedding, x.view_1_max_pooled_embedding, x.view_2_max_pooled_embedding, x.view_3_max_pooled_embedding]), axis=1)
+                    if model == "VideoPrism":
+                        df_features["features"] = df_features.apply(lambda x: torch.stack([torch.tensor(x.view_0_max_pooled_embedding), torch.tensor(x.view_1_max_pooled_embedding), torch.tensor(x.view_2_max_pooled_embedding), torch.tensor(x.view_3_max_pooled_embedding)]), axis=1)
+                    else:
+                        df_features["features"] = df_features.apply(lambda x: torch.stack([x.view_0_max_pooled_embedding, x.view_1_max_pooled_embedding, x.view_2_max_pooled_embedding, x.view_3_max_pooled_embedding]), axis=1)
             
             df_features = df_features.rename(columns={"filename":"file_name"})
             df_features = df_features[["file_name", "features"]]
@@ -82,17 +90,17 @@ def get_all_static_embeddings(model, num_views=1, view_index=0, pooling="mean"):
 
 if __name__ == "__main__":
 
-    for model_name in model_embedding_paths.keys():
-        print(f"Testing {model_name} Embeddings")
-        x = get_all_static_embeddings(model=model_name, num_views=1, pooling="mean")
-        x_f = x.iloc[0]["features"]
-        print(f"Single-view {model_name} Embedding Shape: {x_f.shape}")
-        print("==============================")
+    # for model_name in model_embedding_paths.keys():
+    #     print(f"Testing {model_name} Embeddings")
+    #     x = get_all_static_embeddings(model=model_name, num_views=1, pooling="mean")
+    #     x_f = x.iloc[0]["features"]
+    #     print(f"Single-view {model_name} Embedding Shape: {x_f.shape}")
+    #     print("==============================")
         
-    print()
+    # print()
 
     for model_name in model_embedding_paths_multiview[4].keys():
-        print(f"Testing {model_name} Embeddings")
+        print(f"Testing multi-view {model_name} Embeddings")
         x = get_all_static_embeddings(model=model_name, num_views=4, view_index=-1, pooling="mean")
         x_f = x.iloc[0]["features"]
         print(f"Multi-view {model_name} Embedding Shape: {x_f.shape}")

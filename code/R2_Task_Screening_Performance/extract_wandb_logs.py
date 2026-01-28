@@ -3,6 +3,7 @@ import wandb
 from tqdm import tqdm
 api = wandb.Api()
 
+# /localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/wandb_results/wandb_runs_summary_all_runs.csv
 # Project is specified by <entity/project-name>
 # runs = api.runs("mislam6/park_video_benchmarking_v1", per_page=1000)
 
