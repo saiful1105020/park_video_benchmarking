@@ -1,0 +1,18 @@
+Task,Best Model,Accuracy,Sensitivity,Specificity,PPV,NPV,AUC,Test Samples,Test Positives
+Sustained Phonation A,VideoPrism,$77.2 \pm 5.2$,$81.2 \pm 4.8$,$75.3 \pm 5.3$,$60.7 \pm 6.1$,$89.5 \pm 3.8$,$80.8 \pm 4.9$,250,80
+Sustained Phonation E,VideoPrism,$74.6 \pm 5.4$,$54.4 \pm 6.2$,$84.0 \pm 4.6$,$61.4 \pm 6.1$,$79.8 \pm 5.0$,$80.6 \pm 4.9$,248,79
+Sustained Phonation O,VideoPrism,$75.6 \pm 5.4$,$56.2 \pm 6.2$,$84.9 \pm 4.5$,$64.3 \pm 6.0$,$80.1 \pm 5.0$,$79.3 \pm 5.1$,246,80
+Facial Expression Disgust,VJEPA2,$76.2 \pm 4.6$,$58.9 \pm 5.3$,$83.3 \pm 4.0$,$58.9 \pm 5.3$,$83.3 \pm 4.0$,$80.5 \pm 4.3$,328,95
+Facial Expression Smile,VJEPA2,$78.6 \pm 4.4$,$44.9 \pm 5.4$,$92.7 \pm 2.8$,$72.1 \pm 4.8$,$80.1 \pm 4.3$,$81.4 \pm 4.2$,332,98
+Facial Expression Surprise,VJEPA2-SSv2,$76.9 \pm 5.4$,$62.5 \pm 6.2$,$83.3 \pm 4.8$,$62.5 \pm 6.2$,$83.3 \pm 4.8$,$77.4 \pm 5.4$,234,72
+Extend Arm,VJEPA2-SSv2,$78.0 \pm 4.5$,$69.6 \pm 5.0$,$81.3 \pm 4.2$,$59.3 \pm 5.3$,$87.2 \pm 3.6$,$83.8 \pm 4.0$,327,92
+Eye Gaze,VideoPrism,$74.4 \pm 5.4$,$51.2 \pm 6.2$,$85.3 \pm 4.4$,$62.1 \pm 6.0$,$78.8 \pm 5.1$,$79.3 \pm 5.0$,250,80
+Finger Tapping,VJEPA2-SSv2,$79.7 \pm 5.5$,$75.0 \pm 5.9$,$81.8 \pm 5.3$,$64.9 \pm 6.5$,$88.0 \pm 4.4$,$83.9 \pm 5.0$,207,64
+Flip Palm,VJEPA2,$80.0 \pm 4.5$,$75.0 \pm 4.9$,$81.9 \pm 4.3$,$61.2 \pm 5.5$,$89.6 \pm 3.4$,$87.9 \pm 3.7$,305,84
+Head Pose,VideoPrism,$73.4 \pm 5.5$,$57.0 \pm 6.2$,$81.1 \pm 4.9$,$58.4 \pm 6.1$,$80.1 \pm 5.0$,$79.5 \pm 5.0$,248,79
+Nose Touch,VJEPA2-SSv2,$81.9 \pm 5.2$,$54.9 \pm 6.7$,$90.6 \pm 4.0$,$65.1 \pm 6.4$,$86.2 \pm 4.7$,$81.3 \pm 5.3$,210,51
+Open Fist,VideoPrism,$78.0 \pm 4.6$,$51.8 \pm 5.6$,$88.2 \pm 3.6$,$62.9 \pm 5.4$,$82.6 \pm 4.3$,$83.0 \pm 4.2$,305,85
+Pangram Utterance,VJEPA2,$74.5 \pm 4.6$,$63.7 \pm 5.1$,$79.1 \pm 4.3$,$56.5 \pm 5.3$,$83.6 \pm 3.9$,$80.2 \pm 4.2$,341,102
+Resting Face,VJEPA2,$67.1 \pm 10.0$,$78.4 \pm 8.7$,$50.0 \pm 10.6$,$70.2 \pm 9.7$,$60.7 \pm 10.4$,$74.3 \pm 9.3$,85,51
+Reverse Count,VideoPrism,$69.8 \pm 5.7$,$45.6 \pm 6.2$,$81.1 \pm 4.9$,$52.9 \pm 6.2$,$76.1 \pm 5.3$,$78.4 \pm 5.1$,248,79
+Tongue Twister,VJEPA2,$73.5 \pm 5.8$,$54.4 \pm 6.5$,$81.9 \pm 5.0$,$56.9 \pm 6.5$,$80.4 \pm 5.2$,$78.4 \pm 5.4$,223,68

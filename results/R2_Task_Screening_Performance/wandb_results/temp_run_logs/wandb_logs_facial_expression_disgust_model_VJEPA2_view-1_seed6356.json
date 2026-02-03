@@ -1,0 +1,16 @@
+{
+    "train_loss": 0.36505211835815793,
+    "dev_loss": 0.48534271355425374,
+    "dev_auroc": 0.8230309072781655,
+    "dev_accuracy": 0.75,
+    "dev_f1_score": 0.6244725738396625,
+    "test_accuracy": 0.7682926829268293,
+    "test_precision": 0.6067415730337079,
+    "test_recall": 0.5684210526315789,
+    "test_auroc": 0.7894736842105263,
+    "test_f1_score": 0.5869565217391305,
+    "test_specificity": 0.8497854077253219,
+    "test_npv": 0.8284518828451883,
+    "test_samples": 328,
+    "test_positives": 95
+}

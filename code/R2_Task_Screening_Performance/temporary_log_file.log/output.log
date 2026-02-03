@@ -1,0 +1,332 @@
+/localdisk1/PARK/park_video_benchmarking/code/Utils/file_path_labels.py:95: DtypeWarning: Columns (13,14) have mixed types. Specify dtype option on import or set low_memory=False.
+  df_metadata = pd.read_csv(METADATA_FILE_PATH) #file_name, task, label
+Number of files with metadata and raw videos: 2189
+Size of training set: 1660 videos, 1131 participants
+Size of validation set: 272 videos, 209 participants
+Size of test set: 257 videos, 217 participants
+Task name: sustained_phonation_a
+Number of files with embedding: 37752
+Number of train files with embedding: 1658
+Number of dev files with embedding: 272
+Number of test files with embedding: 256
+Total number of files with embedding: 2186, PD: 1064, Non-PD: 1122
+  8%|▊         | 13/156 [00:00<00:06, 23.28it/s]
+After epoch 0, training_loss = 0.8347353400309785, validation loss = 0.5978847391465131
+---------
+After epoch 1, training_loss = 0.647876702977032, validation loss = 0.7404217895339517
+---------
+After epoch 2, training_loss = 0.6151852591909172, validation loss = 0.6057510446099674
+---------
+After epoch 3, training_loss = 0.5786556497270149, validation loss = 0.5481428398805506
+---------
+After epoch 4, training_loss = 0.5698286333043843, validation loss = 0.5849176505032707
+---------
+After epoch 5, training_loss = 0.5453745581128773, validation loss = 0.5461759216645184
+---------
+After epoch 6, training_loss = 0.5219155505065894, validation loss = 0.5443907520350288
+---------
+After epoch 7, training_loss = 0.5052390326493037, validation loss = 0.5062581861720366
+---------
+After epoch 8, training_loss = 0.4886039890196125, validation loss = 0.543166483149809
+---------
+After epoch 9, training_loss = 0.4748839126636956, validation loss = 0.5769810396082261
+---------
+After epoch 10, training_loss = 0.45521755698075195, validation loss = 0.5299436379881466
+---------
+After epoch 11, training_loss = 0.43339209465267287, validation loss = 0.5942468660719255
+---------
+After epoch 12, training_loss = 0.4190246856471454, validation loss = 0.5196799215148477
+---------
+After epoch 13, training_loss = 0.39859262558174363, validation loss = 0.481696135857526
+---------
+After epoch 14, training_loss = 0.39422275569959486, validation loss = 0.47213219193851247
+---------
+After epoch 15, training_loss = 0.37277240409494455, validation loss = 0.5779262290281408
+---------
+After epoch 16, training_loss = 0.37473694744673797, validation loss = 0.5943142613943886
+---------
+After epoch 17, training_loss = 0.3824131881011553, validation loss = 0.4800226127400118
+---------
+After epoch 18, training_loss = 0.3806011932750375, validation loss = 0.4649204927332261
+---------
+After epoch 19, training_loss = 0.36757824019011026, validation loss = 0.45820695512435017
+---------
+After epoch 20, training_loss = 0.32217975936839033, validation loss = 0.47564519503537345
+---------
+After epoch 21, training_loss = 0.30856166210191815, validation loss = 0.4848716749864466
+---------
+After epoch 22, training_loss = 0.2982305676212357, validation loss = 0.5661833742085625
+---------
+After epoch 23, training_loss = 0.2883578157827564, validation loss = 0.5222482120289522
+---------
+After epoch 24, training_loss = 0.27639475130488417, validation loss = 0.5228684579624849
+---------
+After epoch 25, training_loss = 0.26543697664475985, validation loss = 0.4962320047266343
+---------
+After epoch 26, training_loss = 0.24920862589584186, validation loss = 0.528276148964377
+---------
+After epoch 27, training_loss = 0.23824423544369502, validation loss = 0.5635717020315283
+---------
+After epoch 28, training_loss = 0.22556707586540387, validation loss = 0.5565973239786485
+---------
+After epoch 29, training_loss = 0.2160767363732629, validation loss = 0.5542159571367151
+---------
+After epoch 30, training_loss = 0.20223504170074394, validation loss = 0.5204876906731549
+---------
+After epoch 31, training_loss = 0.20545645989252947, validation loss = 0.6483262076097376
+---------
+After epoch 32, training_loss = 0.20107101703869276, validation loss = 0.5639430950669682
+---------
+After epoch 33, training_loss = 0.18117797513131784, validation loss = 0.5404382348060608
+---------
+After epoch 34, training_loss = 0.18024032170220364, validation loss = 0.5940303872613346
+---------
+After epoch 35, training_loss = 0.16157509648972454, validation loss = 0.5558628755457261
+---------
+After epoch 36, training_loss = 0.15276077123689133, validation loss = 0.6059088426477769
+---------
+After epoch 37, training_loss = 0.14619996996351547, validation loss = 0.5790633594288546
+---------
+After epoch 38, training_loss = 0.14029044793655845, validation loss = 0.5813600736505845
+---------
+After epoch 39, training_loss = 0.13435345160155876, validation loss = 0.5976194914649514
+---------
+After epoch 40, training_loss = 0.12802613711723804, validation loss = 0.6290209223242367
+---------
+After epoch 41, training_loss = 0.12618306277384947, validation loss = 0.6100923103444716
+---------
+After epoch 42, training_loss = 0.12358981230721974, validation loss = 0.6184671416002161
+---------
+After epoch 43, training_loss = 0.12000950921070734, validation loss = 0.6181787252426147
+---------
+After epoch 44, training_loss = 0.10949396905551055, validation loss = 0.6248418443343219
+---------
+After epoch 45, training_loss = 0.105043673427243, validation loss = 0.6517613039297216
+---------
+After epoch 46, training_loss = 0.10407169227936587, validation loss = 0.6194185824955211
+---------
+After epoch 47, training_loss = 0.10112833013292964, validation loss = 0.6503817824756398
+---------
+After epoch 48, training_loss = 0.09457601832430383, validation loss = 0.6232258712544161
+---------
+After epoch 49, training_loss = 0.0927071409845956, validation loss = 0.6584378901649924
+---------
+After epoch 50, training_loss = 0.08914174076587644, validation loss = 0.619689008768867
+---------
+After epoch 51, training_loss = 0.08711566412944989, validation loss = 0.640577049816356
+---------
+After epoch 52, training_loss = 0.08234773809932829, validation loss = 0.6526202138732461
+---------
+After epoch 53, training_loss = 0.0804391428109245, validation loss = 0.6683728274177102
+---------
+After epoch 54, training_loss = 0.07647088252735944, validation loss = 0.7057527443941902
+---------
+After epoch 55, training_loss = 0.07789158373531875, validation loss = 0.7233259397394517
+---------
+After epoch 56, training_loss = 0.07848533062293532, validation loss = 0.6987151924301597
+---------
+After epoch 57, training_loss = 0.07142721159682487, validation loss = 0.6972648045595955
+---------
+After epoch 58, training_loss = 0.06975786598226273, validation loss = 0.6863883944118724
+---------
+After epoch 59, training_loss = 0.06620820251768691, validation loss = 0.7036277301171247
+---------
+After epoch 60, training_loss = 0.06518881729791622, validation loss = 0.6706108521012699
+---------
+After epoch 61, training_loss = 0.06422530022080183, validation loss = 0.6733517997405108
+---------
+After epoch 62, training_loss = 0.06252705291884224, validation loss = 0.7022691579426036
+---------
+After epoch 63, training_loss = 0.06043218366523128, validation loss = 0.7065108944387997
+---------
+After epoch 64, training_loss = 0.05920572278726806, validation loss = 0.6882902348742765
+---------
+After epoch 65, training_loss = 0.05848874190802022, validation loss = 0.6934891413239872
+---------
+After epoch 66, training_loss = 0.057326385614308285, validation loss = 0.7127163655617658
+---------
+After epoch 67, training_loss = 0.05620233578870323, validation loss = 0.7192553737584282
+---------
+After epoch 68, training_loss = 0.054948341375524665, validation loss = 0.7047620065072003
+---------
+After epoch 69, training_loss = 0.05363811054620869, validation loss = 0.7261909211383146
+---------
+After epoch 70, training_loss = 0.05341626943703583, validation loss = 0.7172694626976462
+---------
+After epoch 71, training_loss = 0.05181423527052664, validation loss = 0.7029381394386292
+---------
+After epoch 72, training_loss = 0.051284052710193775, validation loss = 0.727865969433504
+---------
+After epoch 73, training_loss = 0.049830587893113294, validation loss = 0.7278640200110043
+---------
+After epoch 74, training_loss = 0.04896592433745237, validation loss = 0.7094460936153636
+---------
+After epoch 75, training_loss = 0.0490194878061229, validation loss = 0.7336169621523689
+---------
+After epoch 76, training_loss = 0.04836720204827869, validation loss = 0.7537128469523262
+---------
+After epoch 77, training_loss = 0.047895306040531764, validation loss = 0.7168660023633171
+---------
+After epoch 78, training_loss = 0.04637514282606623, validation loss = 0.7312016557244694
+---------
+After epoch 79, training_loss = 0.04693155754604731, validation loss = 0.7742842330652124
+---------
+After epoch 80, training_loss = 0.046691015403183, validation loss = 0.7132674245273366
+---------
+After epoch 81, training_loss = 0.046048996877936316, validation loss = 0.7344349833095775
+---------
+After epoch 82, training_loss = 0.04397531805966674, validation loss = 0.744044700089623
+---------
+After epoch 83, training_loss = 0.04370154899211356, validation loss = 0.7264311208444483
+---------
+After epoch 84, training_loss = 0.04323310446807501, validation loss = 0.7485572660670561
+---------
+After epoch 85, training_loss = 0.04228512544647776, validation loss = 0.7412329912185669
+---------
+After epoch 86, training_loss = 0.041890613101108226, validation loss = 0.7540423484409556
+---------
+After epoch 87, training_loss = 0.041713298135521326, validation loss = 0.7384991786059212
+---------
+After epoch 88, training_loss = 0.04104364931637329, validation loss = 0.7644606478074017
+---------
+After epoch 89, training_loss = 0.041054124387814715, validation loss = 0.7352019758785472
+---------
+After epoch 90, training_loss = 0.040192434274388164, validation loss = 0.7677934730754179
+---------
+After epoch 91, training_loss = 0.03992674874526025, validation loss = 0.7469756953856524
+---------
+After epoch 92, training_loss = 0.039448082514457736, validation loss = 0.7671791174832512
+---------
+After epoch 93, training_loss = 0.03997346216450986, validation loss = 0.7438345726798562
+---------
+After epoch 94, training_loss = 0.0388298452313904, validation loss = 0.7650554495699265
+---------
+After epoch 95, training_loss = 0.038472788482544935, validation loss = 0.7524413115837995
+---------
+After epoch 96, training_loss = 0.038180352313347404, validation loss = 0.7578801512718201
+---------
+After epoch 97, training_loss = 0.03788376819742315, validation loss = 0.7556138704804813
+---------
+After epoch 98, training_loss = 0.038166854202531644, validation loss = 0.7612374880734611
+---------
+After epoch 99, training_loss = 0.03766665776654521, validation loss = 0.7584162985577303
+---------
+After epoch 100, training_loss = 0.03700364189642617, validation loss = 0.7615986992331112
+---------
+After epoch 101, training_loss = 0.0366880400656791, validation loss = 0.7632640880696914
+---------
+After epoch 102, training_loss = 0.036583796330021, validation loss = 0.76673625497257
+---------
+After epoch 103, training_loss = 0.03617604094837198, validation loss = 0.7575983229805442
+---------
+After epoch 104, training_loss = 0.03601916316802309, validation loss = 0.7637656611554763
+---------
+After epoch 105, training_loss = 0.035712364494836515, validation loss = 0.7765962165944716
+---------
+After epoch 106, training_loss = 0.03571158280850032, validation loss = 0.7656594094108132
+---------
+After epoch 107, training_loss = 0.0353465582523832, validation loss = 0.7675833491718068
+---------
+After epoch 108, training_loss = 0.035164630968478675, validation loss = 0.7686244880451876
+---------
+After epoch 109, training_loss = 0.03491404256249797, validation loss = 0.7660361458273495
+---------
+After epoch 110, training_loss = 0.034891099371330586, validation loss = 0.7709065605612362
+---------
+After epoch 111, training_loss = 0.03476184748778225, validation loss = 0.7695022540933946
+---------
+After epoch 112, training_loss = 0.034462905422625985, validation loss = 0.7644090582342709
+---------
+After epoch 113, training_loss = 0.03431756811978159, validation loss = 0.7761350659763112
+---------
+After epoch 114, training_loss = 0.034301007600148425, validation loss = 0.7810551489100737
+---------
+After epoch 115, training_loss = 0.03389501030162534, validation loss = 0.7695458215825698
+---------
+After epoch 116, training_loss = 0.033833556182781374, validation loss = 0.7731540518648484
+---------
+After epoch 117, training_loss = 0.03386045458071626, validation loss = 0.7774830705979291
+---------
+After epoch 118, training_loss = 0.03344141444768779, validation loss = 0.7673187501290265
+---------
+After epoch 119, training_loss = 0.03341897157334304, validation loss = 0.7761981697643504
+---------
+After epoch 120, training_loss = 0.03320646446885764, validation loss = 0.7740613853230196
+---------
+After epoch 121, training_loss = 0.033046563451410924, validation loss = 0.7760118316201603
+---------
+After epoch 122, training_loss = 0.03293232206340578, validation loss = 0.7778691333882949
+---------
+After epoch 123, training_loss = 0.03281789506696821, validation loss = 0.779539546545814
+---------
+After epoch 124, training_loss = 0.03271114520854412, validation loss = 0.7782150752404157
+---------
+After epoch 125, training_loss = 0.032593752348523665, validation loss = 0.7837912931161768
+---------
+After epoch 126, training_loss = 0.032501031567125756, validation loss = 0.779183731359594
+---------
+After epoch 127, training_loss = 0.03234990984111557, validation loss = 0.7841843296499813
+---------
+After epoch 128, training_loss = 0.032282107787159585, validation loss = 0.7811588399550494
+---------
+After epoch 129, training_loss = 0.03216847937792288, validation loss = 0.781294864766738
+---------
+After epoch 130, training_loss = 0.03221989516955233, validation loss = 0.7804198335198795
+---------
+After epoch 131, training_loss = 0.03197582787300479, validation loss = 0.7893341358970193
+---------
+After epoch 132, training_loss = 0.031959396158991016, validation loss = 0.7808188199996948
+---------
+After epoch 133, training_loss = 0.031826851819838485, validation loss = 0.7818997186772964
+---------
+After epoch 134, training_loss = 0.03178001815325101, validation loss = 0.7826520379851846
+---------
+After epoch 135, training_loss = 0.03162788608267598, validation loss = 0.7868586217655855
+---------
+After epoch 136, training_loss = 0.03159873112721596, validation loss = 0.7874179447398466
+---------
+After epoch 137, training_loss = 0.03151933615634036, validation loss = 0.7809891840990852
+---------
+After epoch 138, training_loss = 0.03146527714317325, validation loss = 0.7844791798030629
+---------
+After epoch 139, training_loss = 0.031332045939579084, validation loss = 0.7857486886136672
+---------
+After epoch 140, training_loss = 0.03129383438998166, validation loss = 0.7852843509000891
+---------
+After epoch 141, training_loss = 0.031193922297406685, validation loss = 0.7880230370689841
+---------
+After epoch 142, training_loss = 0.031136781860264275, validation loss = 0.7865557249854592
+---------
+After epoch 143, training_loss = 0.031102852749810145, validation loss = 0.7843777432161219
+---------
+After epoch 144, training_loss = 0.03109365140185641, validation loss = 0.7873517976087683
+---------
+After epoch 145, training_loss = 0.030982470157835968, validation loss = 0.7848096735337201
+---------
+After epoch 146, training_loss = 0.03089445388782657, validation loss = 0.7882611190571505
+---------
+After epoch 147, training_loss = 0.03084640753589148, validation loss = 0.7874023774090935
+---------
+After epoch 148, training_loss = 0.030777684151137696, validation loss = 0.7856419577318079
+---------
+After epoch 149, training_loss = 0.030738749596390277, validation loss = 0.7874947085100061
+---------
+After epoch 150, training_loss = 0.03069972145327325, validation loss = 0.7884992255884058
+---------
+After epoch 151, training_loss = 0.030623891439167526, validation loss = 0.7882500851855558
+---------
+After epoch 152, training_loss = 0.030572610479230183, validation loss = 0.7896457209306604
+---------
+After epoch 153, training_loss = 0.030540219217143387, validation loss = 0.7905237885082469
+---------
+After epoch 154, training_loss = 0.030502021683445166, validation loss = 0.7900542722028845
+---------
+After epoch 155, training_loss = 0.030453207746453683, validation loss = 0.7893267659580007
+---------
+==========
+Training metrics
+{'accuracy': 0.8449939686369119, 'average_precision': 0.9512472130428651, 'auroc': 0.9446747915180295, 'f1_score': 0.8433881779402803, 'confusion_matrix': {'tn': np.int64(709), 'fp': np.int64(63), 'fn': np.int64(194), 'tp': np.int64(692)}, 'weighted_accuracy': np.float64(0.8508584336244893), 'TPR': 0.781038374717833, 'recall': 0.781038374717833, 'sensitivity': 0.781038374717833, 'FPR': np.float64(0.08160621761658031), 'PPV': 0.9165562913907285, 'precision': 0.9165562913907285, 'NPV': np.float64(0.7851605758582503), 'TNR': np.float64(0.9183937823834197), 'specificity': np.float64(0.9183937823834197), 'loss': 0.34877210301858236}
+Validation metrics
+{'accuracy': 0.7867647058823529, 'average_precision': 0.7685984009777198, 'auroc': 0.8516614869710735, 'f1_score': 0.6947368421052632, 'confusion_matrix': {'tn': np.int64(148), 'fp': np.int64(30), 'fn': np.int64(28), 'tp': np.int64(66)}, 'weighted_accuracy': np.float64(0.7642045454545454), 'TPR': 0.7021276595744681, 'recall': 0.7021276595744681, 'sensitivity': 0.7021276595744681, 'FPR': np.float64(0.16853932584269662), 'PPV': 0.6875, 'precision': 0.6875, 'NPV': np.float64(0.8409090909090909), 'TNR': np.float64(0.8314606741573034), 'specificity': np.float64(0.8314606741573034), 'loss': 0.45820695512435017}
+Test metrics
+{'accuracy': 0.71875, 'average_precision': 0.6604870092929551, 'auroc': 0.7962347729789591, 'f1_score': 0.5662650602409639, 'confusion_matrix': {'tn': np.int64(137), 'fp': np.int64(35), 'fn': np.int64(37), 'tp': np.int64(47)}, 'weighted_accuracy': np.float64(0.6802635267731987), 'TPR': 0.5595238095238095, 'recall': 0.5595238095238095, 'sensitivity': 0.5595238095238095, 'FPR': np.float64(0.20348837209302326), 'PPV': 0.573170731707317, 'precision': 0.573170731707317, 'NPV': np.float64(0.7873563218390804), 'TNR': np.float64(0.7965116279069767), 'specificity': np.float64(0.7965116279069767), 'loss': 0.538033664226532}

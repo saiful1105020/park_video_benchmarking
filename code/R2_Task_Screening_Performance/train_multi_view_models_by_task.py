@@ -55,7 +55,7 @@ if torch.cuda.is_available():
     device = 'cuda'
 print(f"Device: {device}")
 
-valid_tasks = list(task_name_mapping.keys())
+valid_tasks = [x for x in list(task_name_mapping.keys()) if x not in ["free_flow_speech", "resting_tremor"]]
 print("Valid tasks are:")
 print(valid_tasks)
 
@@ -300,7 +300,7 @@ def training_loop(train_loader, dev_loader, model, optimizer, scheduler, criteri
 @click.option("--num_views", default=4)
 @click.option("--view_index", default=-1)
 @click.option("--seed", default=42)
-@click.option("--enable_wandb", default=False)
+@click.option("--enable_wandb", default=True)
 def main(**cfg):
     assert cfg["task_name"] in valid_tasks, f"Invalid task name. Valid options are: {valid_tasks}"
     assert cfg["model"] in model_embedding_paths.keys(), f"Invalid model name. Valid options are: {list(model_embedding_paths.keys())}"

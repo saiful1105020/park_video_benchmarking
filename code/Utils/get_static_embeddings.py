@@ -20,7 +20,9 @@ model_embedding_paths_multiview = {
         "VideoMAE": "/localdisk1/PARK/park_video_benchmarking/data/multi_view_embeddings/VideoMAE/VideoMAE_4views_2stride_Features_All_PARK_Videos.pkl",
         "TimeSformer": "/localdisk1/PARK/park_video_benchmarking/data/multi_view_embeddings/TimeSformer/TimeSformer_4views_2stride_Features_All_PARK_Videos.pkl",
         "VideoPrism": "/localdisk1/PARK/park_video_benchmarking/data/multi_view_embeddings/VideoPrism/VideoPrism_4views_2stride_Features_All_PARK_Videos.pkl",
-        "VJEPA2": "/localdisk1/PARK/park_video_benchmarking/data/multi_view_embeddings/VJEPA2/VJEPA2_basic_4views_2stride_Features_All_PARK_Videos.pkl"
+        "VJEPA2": "/localdisk1/PARK/park_video_benchmarking/data/multi_view_embeddings/VJEPA2/VJEPA2_basic_4views_2stride_Features_All_PARK_Videos.pkl",
+        "VJEPA2_SSV2": "/localdisk1/PARK/park_video_benchmarking/data/multi_view_embeddings/VJEPA2_SSV2/VJEPA2_ssv2_4views_2stride_Features_All_PARK_Videos.pkl",
+        "VideoMAEv2": "/localdisk1/PARK/park_video_benchmarking/data/multi_view_embeddings/VideoMAEv2/VideoMAEv2_4views_2stride_Features_All_PARK_Videos.pkl"
     }
 }
 
