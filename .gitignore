@@ -4,3 +4,4 @@ data/single_view_embeddings/*
 code/*/log*
 code/*/wandb/*
 code/*/nohup.out
+results/*/wandb_results/*/*.json

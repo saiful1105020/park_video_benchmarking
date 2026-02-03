@@ -10,6 +10,7 @@ import torch
 
 wandb_results_path = "/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/wandb_results/wandb_runs_summary_single_view_top_100.csv"
 summary_results_path = "/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/wandb_results/summary_best_models_per_task_with_random_seeds.csv"
+latex_path = "/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/latex/summary_best_models_per_task_with_random_seeds_final_with_CI_random_seeds.tex"
 
 model_name_for_display = {
     "VideoMAE": "VideoMAE",
@@ -133,7 +134,7 @@ if __name__ == "__main__":
         df_task = pd.read_csv(task_result_path)
 
         summary_row = {
-            "Task": " ".join([x.capitalize() for x in task.split("_")]),
+            "Task": task,
             "Best Model": model,
             "Accuracy": f"${(df_task['test_accuracy'].mean()*100):.1f} \pm {(1.96*(df_task['test_accuracy'].std()/np.sqrt(len(df_task)))*100):.1f}$",
             "Sensitivity": f"${(df_task['test_recall'].mean()*100):.1f} \pm {(1.96*(df_task['test_recall'].std()/np.sqrt(len(df_task)))*100):.1f}$",
@@ -173,5 +174,8 @@ if __name__ == "__main__":
     latex_code = latex_code.replace("\\end{table}", "\\end{table*}")
 
     # Save to your path
-    with open(summary_results_path.replace(".csv", "_final_with_CI_random_seeds.tex"), "w") as f:
+    with open(latex_path, "w") as f:
         f.write(latex_code)
+
+    print(latex_code)
+    print("Latex table saved successfully.")

@@ -9,6 +9,7 @@ import json
 
 wandb_results_path = "/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/wandb_results/wandb_runs_summary_multi_view_top_100.csv"
 summary_results_path = "/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/wandb_results/summary_best_models_per_task_multi_view.csv"
+latex_path = "/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/latex/summary_best_models_per_task_multi_view_final_with_CI.tex"
 
 model_name_for_display = {
     "VideoMAE": "VideoMAE",
@@ -147,5 +148,5 @@ if __name__ == "__main__":
     latex_code = latex_code.replace("\\end{table}", "\\end{table*}")
 
     # Save to your path
-    with open(summary_results_path.replace(".csv", "_final_with_CI.tex"), "w") as f:
+    with open(latex_path, "w") as f:
         f.write(latex_code)
