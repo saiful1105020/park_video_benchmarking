@@ -440,16 +440,16 @@ def main(**cfg):
     if ENABLE_WANDB:
         wandb.log(wandb_logs)
 
-    # # save wandb_logs as a local json file
-    # json.dump(
-    #     wandb_logs,
-    #     open(os.path.join(
-    #         wandb_temp_path,
-    #         f"wandb_logs_{cfg['task_name']}_model_{cfg['model']}_view{cfg['view_index']}_seed{cfg['seed']}.json"
-    #     ), "w"),
-    #     indent=4,
-    #     default=json_default
-    # )
+    # save wandb_logs as a local json file
+    json.dump(
+        wandb_logs,
+        open(os.path.join(
+            wandb_temp_path,
+            f"wandb_logs_{cfg['task_name']}_model_{cfg['model']}_view{cfg['view_index']}_seed{cfg['seed']}.json"
+        ), "w"),
+        indent=4,
+        default=json_default
+    )
 
     # save the model
     # after we find out the best configuration
