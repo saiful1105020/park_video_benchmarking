@@ -14,22 +14,21 @@ PD labels found in dataset: ['no' 'yes' 'Unlikely' 'Possible' 'Probable' nan]
 Task names found in dataset: ['ahhhh' 'disgust' 'eeeee' 'extend_arm' 'eye_gaze' 'finger_tapping_left'
  'finger_tapping_right' 'flip_palm_left' 'flip_palm_right' 'head pose'
  'nose_touch_left' 'nose_touch_right' 'ooooo' 'open_fist_left'
- 'open_fist_right' 'quick_brown_fox' 'resting_face' 'reverse_count'
- 'smile' 'surprise' 'tongue_twister' 'finger_tapping' 'flip_palm'
- 'nose_touch' 'open_fist']
-[METADATA] Number of videos after filtering tasks: 35964
+ 'open_fist_right' 'quick_brown_fox' 'reverse_count' 'smile' 'surprise'
+ 'tongue_twister' 'finger_tapping' 'flip_palm' 'nose_touch' 'open_fist']
+[METADATA] Number of videos after filtering tasks: 34425
 ----------------------------------------
 
 
 Number of existing videos in folder: 37791
-Number of filenames in metadata: 35964
-Number of missing videos: 1703
-[METADATA] Number of videos after filtering non-existing videos: 34261
+Number of filenames in metadata: 34425
+Number of missing videos: 1578
+[METADATA] Number of videos after filtering non-existing videos: 32847
 ----------------------------------------
 
 
-Number of unique Participant_IDs before correction: 1899
-Number of unique Participant_IDs after correction: 1890
+Number of unique Participant_IDs before correction: 1897
+Number of unique Participant_IDs after correction: 1888
 ['Female' 'Male' 'Unknown' 'Other']
 ----------------------------------------
 
@@ -47,16 +46,24 @@ PD labels found in dataset (after filtering None values): ['no' 'yes']
 ----------------------------------------
 
 
+N = 1888
+self-reported PD = 445
+clinically-verified PD = 282
+Total PD = 727
+Total Non-PD = 1161
+----------------------------------------
+
+
 Data frequency across protocols:
-Number of videos for protocol SuperPD: 1033
+Number of videos for protocol SuperPD: 982
 Number of videos for protocol SuperPD_old: 4244
 Number of videos for protocol ValorPD: 4636
-Number of videos for protocol ClusterPD: 1658
-Number of videos for protocol InMotion: 3565
-Number of videos for protocol RoutePD: 3306
-Number of videos for protocol ValidationStudy: 1747
-Number of videos for protocol ParkTest: 14072
-Total videos counted: 34261
+Number of videos for protocol ClusterPD: 1575
+Number of videos for protocol InMotion: 3385
+Number of videos for protocol RoutePD: 2873
+Number of videos for protocol ValidationStudy: 1510
+Number of videos for protocol ParkTest: 13642
+Total videos counted: 32847
 ----------------------------------------
 
 

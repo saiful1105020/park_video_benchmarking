@@ -74,7 +74,6 @@ task_name_mapping = {
     'Nose Touch': ['nose_touch', 'nose_touch_left', 'nose_touch_right'],
     'Open Fist': ['open_fist', 'open_fist_left', 'open_fist_right'],
     'Pangram Utterance': ['quick_brown_fox'],
-    'Resting Face': ['resting_face'],
     'Reverse Count': ['reverse_count'],
     'Tongue Twister': ['tongue_twister'],
 }
@@ -206,7 +205,7 @@ def clean_data():
     #  'nose_touch' 'open_fist' 'task1' 'resting_tremor' 'speech' 'task16'
     #  'task14' 'task15'
     data_df = data_df[~data_df["Task"].isin([
-        'task1', 'task14', 'task15', 'task16', 'resting_tremor', 'speech'
+        'task1', 'task14', 'task15', 'task16', 'resting_tremor', 'speech', 'resting_face'
         ])]
     task_names = data_df["Task"].unique()
     print(f"Task names found in dataset: {task_names}")
@@ -612,6 +611,28 @@ if __name__ == "__main__":
     data_df.loc[data_df['pd']=='Probable', 'pd'] = 'yes'
     pd_labels = data_df["pd"].unique() # ['no' 'yes' 'Unlikely' 'Possible' 'Probable']
     print(f"PD labels found in dataset (after filtering None values): {pd_labels}")
+    newline()
+
+    # Count self-reported PD vs clinically diagnosed PD
+    n_pd_self_reported = 0
+    n_pd_clinical = 0
+    n_non_pd = 0
+    temp_df = data_df.drop_duplicates(subset=['Participant_ID'])
+    groups = temp_df["Protocol"].unique()
+    for group in groups:
+        temp_df_subset = temp_df[temp_df["Protocol"]==group]
+        if group in ["SuperPD", "ValorPD", "ClusterPD", "RoutePD", "SuperPD_old", "InMotion"]:
+            n_pd_clinical += np.sum(temp_df_subset["pd"]=="yes")
+        else:
+            n_pd_self_reported += np.sum(temp_df_subset["pd"]=="yes")
+
+        n_non_pd += np.sum(temp_df_subset["pd"]=="no")
+
+    print(f"N = {n_pd_self_reported+n_pd_clinical+n_non_pd}")
+    print(f"self-reported PD = {n_pd_self_reported}")
+    print(f"clinically-verified PD = {n_pd_clinical}")
+    print(f"Total PD = {n_pd_self_reported + n_pd_clinical}")
+    print(f"Total Non-PD = {n_non_pd}")
     newline()
 
     plot_age_distribution(data_df)
