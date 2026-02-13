@@ -4,7 +4,16 @@ import matplotlib.patches as patches
 import numpy as np
 import os
 
-PLOT_PATH = "/localdisk1/PARK/park_video_benchmarking/results/R4_Model_Performance_Comparison/Plots"
+with open("../wandb_username.txt", "r") as f:
+    wandb_username = f.read().strip()
+
+with open("../project_name.txt", "r") as f:
+    project_name = f.read().strip()
+
+with open("../project_dir.txt", "r") as f:
+    project_dir = f.read().strip()
+
+PLOT_PATH = f"/localdisk1/{project_dir}/{project_name}/results/R4_Model_Performance_Comparison/Plots"
 
 # read csv 
 def read_csv(file_path):
@@ -351,7 +360,7 @@ def main(file_path, tag="single_view"):
     return
 
 if __name__ == "__main__":
-    file_path = "/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/wandb_results/wandb_runs_summary_all_runs.csv"
+    file_path = f"/localdisk1/{project_dir}/{project_name}/results/R2_Task_Screening_Performance/wandb_results/wandb_runs_summary_all_runs.csv"
     main(file_path)
 
 
