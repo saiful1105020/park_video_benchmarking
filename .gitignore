@@ -8,3 +8,4 @@ results/*/wandb_results/*/*.json
 code/project_dir.txt
 code/project_name.txt
 code/wandb_username.txt
+code/R5_Multi_Task_Fusion/*

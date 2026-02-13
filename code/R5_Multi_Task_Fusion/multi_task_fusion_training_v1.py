@@ -10,17 +10,14 @@ import click
 import imblearn
 import scipy
 import sys
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import scipy.stats as stats
 import subprocess as sp
-
 import baal.bayesian.dropout as mcdropout
 from baal.modelwrapper import ModelWrapper
-
 from pandas import DataFrame
 from tqdm import tqdm
 from sklearn.metrics import confusion_matrix, precision_recall_curve, average_precision_score
@@ -29,20 +26,28 @@ from sklearn.preprocessing import MinMaxScaler, StandardScaler
 from mlxtend.plotting import plot_confusion_matrix
 from imblearn.over_sampling import SMOTE, SMOTENC, SVMSMOTE, ADASYN, BorderlineSMOTE, KMeansSMOTE, SMOTEN, RandomOverSampler
 from imblearn.combine import SMOTEENN, SMOTETomek
-
 import torch
 from torch import nn
 from torch.utils.data import Dataset, DataLoader
 from torch.distributions import Categorical
 
-sys.path.append("/localdisk1/PARK/park_video_benchmarking/code/Utils")
+with open("../wandb_username.txt", "r") as f:
+    wandb_username = f.read().strip()
+
+with open("../project_name.txt", "r") as f:
+    project_name = f.read().strip()
+
+with open("../project_dir.txt", "r") as f:
+    project_dir = f.read().strip()
+
+sys.path.append(f"/localdisk1/{project_dir}/{project_name}/code/Utils")
 from file_path_labels import *
 from get_static_embeddings import *
 from calculate_performance_metrics import *
 from models import *
 
-wandb_temp_path = "/localdisk1/PARK/park_video_benchmarking/results/R5_MultiTask/wandb_results/temp_run_logs"
-MODEL_CONFIG_PATH = "/localdisk1/PARK/park_video_benchmarking/results/R5_MultiTask/model_config.txt"
+wandb_temp_path = f"/localdisk1/{project_dir}/{project_name}/results/R5_MultiTask/wandb_results/temp_run_logs"
+MODEL_CONFIG_PATH = f"/localdisk1/{project_dir}/{project_name}/results/R5_MultiTask/model_config.txt"
 os.makedirs(os.path.basename(wandb_temp_path), exist_ok=True)
 os.makedirs(os.path.basename(MODEL_CONFIG_PATH), exist_ok=True)
 
@@ -87,11 +92,11 @@ if torch.cuda.is_available():
     device = 'cuda'
 
 #1. Load dev and test sets (participant ids)
-with open("/localdisk1/PARK/park_video_benchmarking/code/Utils/dev_participant_ids.txt") as f:
+with open(f"/localdisk1/{project_dir}/{project_name}/code/Utils/dev_participant_ids.txt") as f:
     ids = f.readlines()
     dev_ids = set([x.strip() for x in ids])
 
-with open("/localdisk1/PARK/park_video_benchmarking/code/Utils/test_participant_ids.txt") as f:
+with open(f"/localdisk1/{project_dir}/{project_name}/code/Utils/test_participant_ids.txt") as f:
     ids = f.readlines()
     test_ids = set([x.strip() for x in ids])
 	
@@ -665,13 +670,7 @@ def main(**cfg):
     global NUM_TASKS
 
     if cfg["enable_wandb"]:
-        wandb.init(project="park_video_benchmarking_v1", config=cfg)
-
-    # '''
-    # save the configurations obtained from wandb (or command line) into the model config file
-    # '''
-    # with open(MODEL_CONFIG_PATH,"w") as f:
-    #     f.write(json.dumps(cfg))
+        wandb.init(project=f"{project_name}_v1", config=cfg)
 
     #reproducibility control
     torch.manual_seed(cfg["seed"])
