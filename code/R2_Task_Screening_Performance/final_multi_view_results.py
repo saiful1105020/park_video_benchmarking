@@ -1,3 +1,8 @@
+"""
+Based on logs extracted from Weights & Biases,
+This script automatically generates the table for reporting task-wise performance of best models.
+In this version, we use normal approximation method to estimate 95% CI
+"""
 import pandas as pd
 import numpy as np
 import os, sys
@@ -7,9 +12,18 @@ import regex as re
 import ast
 import json
 
-wandb_results_path = "/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/wandb_results/wandb_runs_summary_multi_view_top_100.csv"
-summary_results_path = "/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/wandb_results/summary_best_models_per_task_multi_view.csv"
-latex_path = "/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/latex/summary_best_models_per_task_multi_view_final_with_CI.tex"
+with open("../wandb_username.txt", "r") as f:
+    wandb_username = f.read().strip()
+
+with open("../project_name.txt", "r") as f:
+    project_name = f.read().strip()
+
+with open("../project_dir.txt", "r") as f:
+    project_dir = f.read().strip()
+
+wandb_results_path = f"/localdisk1/{project_dir}/{project_name}/results/R2_Task_Screening_Performance/wandb_results/wandb_runs_summary_multi_view_top_100.csv"
+summary_results_path = f"/localdisk1/{project_dir}/{project_name}/results/R2_Task_Screening_Performance/wandb_results/summary_best_models_per_task_multi_view.csv"
+latex_path = f"/localdisk1/{project_dir}/{project_name}/results/R2_Task_Screening_Performance/latex/summary_best_models_per_task_multi_view_final_with_CI.tex"
 
 model_name_for_display = {
     "VideoMAE": "VideoMAE",
@@ -20,25 +34,6 @@ model_name_for_display = {
     "VJEPA2": "VJEPA2",
     "VJEPA2_SSV2": "VJEPA2-SSv2"
 }
-
-# def extract_dicts_from_log(log_data, key_name):
-#     # Pattern to find everything between curly braces (non-nested)
-#     matches = re.findall(r"\{(?:[^{}]|(?R))*\}", log_data, re.DOTALL)
-#     match = matches[-1]  # Get the last match
-    
-#     data = eval(match, {"np": np, "__builtins__": {}})
-#     return data
-
-# def load_wandb_log(run_id):
-#     api = wandb.Api()
-#     run = api.run(f"mislam6/park_video_benchmarking_v1/{run_id}")
-#     file = run.file("output.log")
-#     file.download("/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/wandb_results/temp_run_logs", replace=True)
-
-#     with open("/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/wandb_results/temp_run_logs/output.log", "r") as f:
-#         log_data = f.read()
-#         metrics_dict = extract_dicts_from_log(log_data, "metrics")
-#     return metrics_dict
 
 # Task - Best Model - Accuracy - Sensitivity - Specificity - PPV - NPV - AUC
 def summarize_wandb_results(wandb_results_path):

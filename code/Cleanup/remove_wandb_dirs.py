@@ -8,7 +8,16 @@ starting from a specified (local) root directory.
 import subprocess
 import os
 
-def remove_wandb_recursive(current_dir = "/localdisk4/"):
+with open("../wandb_username.txt", "r") as f:
+    wandb_username = f.read().strip()
+
+with open("../project_name.txt", "r") as f:
+    project_name = f.read().strip()
+
+with open("../project_dir.txt", "r") as f:
+    project_dir = f.read().strip()
+
+def remove_wandb_recursive(current_dir = "."):
     try:
         dir_lists = os.listdir(current_dir)
     except Exception as e:
@@ -25,5 +34,5 @@ def remove_wandb_recursive(current_dir = "/localdisk4/"):
     return
 
 if __name__ == "__main__":
-    current_dir = "/localdisk1/PARK/park_video_benchmarking"
+    current_dir = f"/localdisk1/{project_dir}/{project_name}"
     remove_wandb_recursive(current_dir)

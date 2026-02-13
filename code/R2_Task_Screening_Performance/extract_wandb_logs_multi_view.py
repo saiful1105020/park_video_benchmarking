@@ -1,7 +1,20 @@
+"""
+This script is used to automatically extract performance metrics from
+hyper-parameter sweep that is set up with Weights & Biases
+"""
 import pandas as pd
 import wandb
 from tqdm import tqdm
 api = wandb.Api()
+
+with open("../wandb_username.txt", "r") as f:
+    wandb_username = f.read().strip()
+
+with open("../project_name.txt", "r") as f:
+    project_name = f.read().strip()
+
+with open("../project_dir.txt", "r") as f:
+    project_dir = f.read().strip()
 
 sweep_ids = [
     "3ntd9t73", "xs9qomlv", "bhorn3fa", "etr7gnmo", "bliugfh2", "nk1f2v5b",
@@ -17,7 +30,7 @@ for sweep_id in sweep_ids:
     # Sort by a summary metric (prefix with 'summary_metrics.')
     # Use '+' for ascending, '-' for descending
     runs = api.runs(
-        "mislam6/park_video_benchmarking_v1",
+        f"{wandb_username}/{project_name}_v1",
         filters={"sweep": sweep_id},
         per_page=100,
         order="-summary_metrics.dev_auroc"
@@ -56,10 +69,10 @@ for sweep_id in sweep_ids:
             final_df = pd.concat([runs_df[['name', 'id']], config_df, summary_df], axis=1)
 
             # Export to CSV
-            final_df.to_csv("/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/wandb_results/wandb_runs_summary_multi_view_top_100.csv", index=False)
+            final_df.to_csv(f"/localdisk1/{project_dir}/{project_name}/results/R2_Task_Screening_Performance/wandb_results/wandb_runs_summary_multi_view_top_100.csv", index=False)
             
             # # We only need the best 1000 runs, discard the rest to save memory
             break
 
-final_df.to_csv("/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/wandb_results/wandb_runs_summary_multi_view_top_100.csv", index=False)        
+final_df.to_csv(f"/localdisk1/{project_dir}/{project_name}/results/R2_Task_Screening_Performance/wandb_results/wandb_runs_summary_multi_view_top_100.csv", index=False)        
 print("Done logging for all sweeps!")

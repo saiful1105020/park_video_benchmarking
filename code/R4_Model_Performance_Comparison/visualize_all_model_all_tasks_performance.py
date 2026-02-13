@@ -207,7 +207,7 @@ def plot_cluster_boxes_clean_x(
             ax.axvline(x=next_xp - gap/2, color="gray", linestyle="--", linewidth=0.8, alpha=0.5)
 
     # --- y formatting ---
-    ax.set_ylabel("AUROC", fontsize=18)
+    ax.set_ylabel("AUC", fontsize=18)
     ax.set_ylim(max(0.45, global_min - 0.03), min(1.0, global_max + 0.03))
     ax.axhline(0.5, linestyle="--", linewidth=1)
     ax.grid(axis="y", linewidth=0.6, alpha=0.35)
@@ -218,11 +218,13 @@ def plot_cluster_boxes_clean_x(
     ax.set_xticks(cluster_tick_positions)
     ax.set_xticklabels(cluster_tick_labels, fontsize=16, rotation=10)
     ax.tick_params(axis="x", length=0)  # remove tick marks
+    ax.tick_params(axis='y', labelsize=16)
 
     # ax.set_title("Clustered AUROC: per-model min–max box + per-task points", pad=28)
 
     model_map = {m: m for m in models}
-    model_map['VJEPA2_SSV2'] = 'VJEPA2-SSv2'
+    model_map['VJEPA2_SSV2'] = 'V-JEPA2-SSv2'
+    model_map['VJEPA2'] = 'V-JEPA2'
 
     # print(model_map)
     # # --- legends ---

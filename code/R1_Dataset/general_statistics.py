@@ -9,13 +9,22 @@ import re
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+with open("../wandb_username.txt", "r") as f:
+    wandb_username = f.read().strip()
+
+with open("../project_name.txt", "r") as f:
+    project_name = f.read().strip()
+
+with open("../project_dir.txt", "r") as f:
+    project_dir = f.read().strip()
+
 import sys
 sys.stdout.flush()
-sys.stdout=open("/localdisk1/PARK/park_video_benchmarking/results/R1_Dataset/general_statistics_temp.log", "wt")
+sys.stdout=open(f"/localdisk1/{project_dir}/{project_name}/results/R1_Dataset/general_statistics_temp.log", "wt")
 
-PLOT_SAVE_DIR = '/localdisk1/PARK/park_video_benchmarking/results/R1_Dataset/plots'
-CSV_SAVE_DIR = '/localdisk1/PARK/park_video_benchmarking/results/R1_Dataset/csv'
-LATEX_SAVE_DIR = '/localdisk1/PARK/park_video_benchmarking/results/R1_Dataset/latex_tables'
+PLOT_SAVE_DIR = f'/localdisk1/{project_dir}/{project_name}/results/R1_Dataset/plots'
+CSV_SAVE_DIR = f'/localdisk1/{project_dir}/{project_name}/results/R1_Dataset/csv'
+LATEX_SAVE_DIR = f'/localdisk1/{project_dir}/{project_name}/results/R1_Dataset/latex_tables'
 
 if os.path.exists(PLOT_SAVE_DIR) is False:
     os.makedirs(PLOT_SAVE_DIR)
@@ -173,7 +182,7 @@ def filename_to_time(filename):
     return "-".join(m.groups())
 
 def clean_data():
-    data_path = "/localdisk1/PARK/park_video_benchmarking/data/metadata/all_file_user_metadata.csv"
+    data_path = f"/localdisk1/{project_dir}/{project_name}/data/metadata/all_file_user_metadata.csv"
     data_df = pd.read_csv(data_path)
 
     # Columns: 
@@ -213,7 +222,7 @@ def clean_data():
     newline()
 
     # Exclude data with non-existing videos
-    existing_videos = set(os.listdir("/localdisk1/PARK/park_video_benchmarking/data/videos/raw_videos/"))
+    existing_videos = set(os.listdir(f"/localdisk1/{project_dir}/{project_name}/data/videos/raw_videos/"))
     filenames_in_metadata = set(data_df["Filename"].tolist())
     print(f"Number of existing videos in folder: {len(existing_videos)}")
     print(f"Number of filenames in metadata: {len(filenames_in_metadata)}")
@@ -249,12 +258,12 @@ def clean_data():
     newline()
 
     # Add PD stage column for clinically diagnosed subjects
-    pd_stage_df = pd.read_csv("/localdisk1/PARK/park_video_benchmarking/data/metadata/df_stage.csv")
+    pd_stage_df = pd.read_csv(f"/localdisk1/{project_dir}/{project_name}/data/metadata/df_stage.csv")
     pd_stage_df.rename(columns={'id':'Participant_ID', 'mdsupdrshoehnyahrstagescor':'PD_Stage'}, inplace=True)
     data_df = data_df.merge(pd_stage_df[['Participant_ID', 'PD_Stage']], on='Participant_ID', how='left')
 
     # Save cleaned metadata
-    cleaned_metadata_path = "/localdisk1/PARK/park_video_benchmarking/data/metadata/cleaned_file_user_metadata.csv"
+    cleaned_metadata_path = f"/localdisk1/{project_dir}/{project_name}/data/metadata/cleaned_file_user_metadata.csv"
     data_df.to_csv(cleaned_metadata_path, index=False)
     print(f"Cleaned metadata saved to: {cleaned_metadata_path}")
     newline()
@@ -682,4 +691,4 @@ if __name__ == "__main__":
     # End of program
     sys.stdout.close()
     sys.stdout = sys.__stdout__
-    os.rename("/localdisk1/PARK/park_video_benchmarking/results/R1_Dataset/general_statistics_temp.log", "/localdisk1/PARK/park_video_benchmarking/results/R1_Dataset/general_statistics.log")
+    os.rename(f"/localdisk1/{project_dir}/{project_name}/results/R1_Dataset/general_statistics_temp.log", f"/localdisk1/{project_dir}/{project_name}/results/R1_Dataset/general_statistics.log")

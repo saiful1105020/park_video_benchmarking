@@ -6,7 +6,16 @@ import numpy as np
 from pathlib import Path
 import requests
 
-CSV_PATH = "/localdisk1/PARK/park_video_benchmarking/data/metadata/country_counts.csv"  # your file: columns like country,count
+with open("../wandb_username.txt", "r") as f:
+    wandb_username = f.read().strip()
+
+with open("../project_name.txt", "r") as f:
+    project_name = f.read().strip()
+
+with open("../project_dir.txt", "r") as f:
+    project_dir = f.read().strip()
+
+CSV_PATH = f"/localdisk1/{project_dir}/{project_name}/data/metadata/country_counts.csv"  # your file: columns like country,count
 CACHE_DIR = Path("geodata_cache")
 CACHE_DIR.mkdir(exist_ok=True)
 
@@ -39,5 +48,5 @@ ax = merged.plot(column="binary_count", legend=False, figsize=(14, 7), cmap="YlG
 ax.set_axis_off()
 # plt.title("Counts by Country")
 plt.tight_layout()
-plt.savefig("/localdisk1/PARK/park_video_benchmarking/results/R1_Dataset/plots/world_map.png", dpi=300)
+plt.savefig(f"/localdisk1/{project_dir}/{project_name}/results/R1_Dataset/plots/world_map.png", dpi=300)
 plt.show()

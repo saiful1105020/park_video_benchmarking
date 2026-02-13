@@ -10,13 +10,22 @@ import wandb
 import pandas as pd
 from tqdm import tqdm
 
+with open("../wandb_username.txt", "r") as f:
+    wandb_username = f.read().strip()
+
+with open("../project_name.txt", "r") as f:
+    project_name = f.read().strip()
+
+with open("../project_dir.txt", "r") as f:
+    project_dir = f.read().strip()
+
 # Initialize the W&B API
 # If, for the first time, you need to login, run `wandb login` in your terminal
 api = wandb.Api()
 
 # Define your entity, project, and run ID
-entity = "mislam6" # your W&B username or team name
-project = "park_video_benchmarking_v1" # your W&B project name
+entity = wandb_username # your W&B username or team name
+project = f"{project_name}_v1" # your W&B project name
 
 # Get runs from the project
 runs = api.runs(f"{entity}/{project}")

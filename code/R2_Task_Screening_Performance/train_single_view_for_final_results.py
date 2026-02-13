@@ -1,3 +1,9 @@
+"""
+Training code for single-view benchmarking
++
+Save performance logs in a temporary text file for automated retrieval of metrics after the script runs successfully
+(This is useful for generating the 95% CI using 30 random seeds)
+"""
 from ast import Index
 import os
 import sys
@@ -7,45 +13,24 @@ import wandb
 import random
 import pandas as pd
 import json
-
 import numpy as np
-
 import torch
 from torch.utils.data import Dataset, DataLoader
-
 from tqdm import tqdm
-
 import matplotlib.pyplot as plt
-
-# os.makedirs("/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/", exist_ok=True)
-# sys.stdout.flush()
-# sys.stdout=open("/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/train_models_by_task_dryrun_temp.log", "wt")
 
 from models import *
 
-# task_name_mapping = {
-#     'sustained_phonation_a': ['ahhhh'],
-#     'sustained_phonation_e': ['eeeee'],
-#     'sustained_phonation_o': ['ooooo'],
-#     'facial_expression_disgust': ['disgust'],
-#     'facial_expression_smile': ['smile'],
-#     'facial_expression_surprise': ['surprise'],
-#     'extend_arm': ['extend_arm'],
-#     'eye_gaze': ['eye_gaze'],
-#     'finger_tapping': ['finger_tapping', 'finger_tapping_left', 'finger_tapping_right'],
-#     'flip_palm': ['flip_palm', 'flip_palm_left', 'flip_palm_right'],
-#     'head_pose': ['head pose'],
-#     'nose_touch': ['nose_touch', 'nose_touch_left', 'nose_touch_right'],
-#     'open_fist': ['open_fist', 'open_fist_left', 'open_fist_right'],
-#     'pangram_utterance': ['quick_brown_fox'],
-#     'resting_face': ['resting_face'],
-#     'reverse_count': ['reverse_count'],
-#     'tongue_twister': ['tongue_twister'],
-#     'resting_tremor': ['resting_tremor'],
-#     'free_flow_speech': ['speech']
-# }
+with open("../wandb_username.txt", "r") as f:
+    wandb_username = f.read().strip()
 
-sys.path.append("/localdisk1/PARK/park_video_benchmarking/code/Utils")
+with open("../project_name.txt", "r") as f:
+    project_name = f.read().strip()
+
+with open("../project_dir.txt", "r") as f:
+    project_dir = f.read().strip()
+
+sys.path.append(f"/localdisk1/{project_dir}/{project_name}/code/Utils")
 from file_path_labels import *
 from get_static_embeddings import *
 from calculate_performance_metrics import *
@@ -60,7 +45,7 @@ valid_tasks = list(task_name_mapping.keys())
 print("Valid tasks are:")
 print(valid_tasks)
 
-wandb_temp_path = "/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/wandb_results/temp_run_logs"
+wandb_temp_path = f"/localdisk1/{project_dir}/{project_name}/results/R2_Task_Screening_Performance/wandb_results/temp_run_logs"
 
 def json_default(obj):
     if isinstance(obj, np.generic):
@@ -316,7 +301,7 @@ def main(**cfg):
     # need to setup wandb and hyper-parameter tuning
     ENABLE_WANDB = cfg["enable_wandb"]
     if ENABLE_WANDB:
-        wandb.init(project="park_video_benchmarking_v1", config=cfg)
+        wandb.init(project=f"{project_name}_v1", config=cfg)
     '''
     Ensure reproducibility of randomness
     '''
@@ -475,11 +460,5 @@ def unit_test():
 
 if __name__ == "__main__":
     # unit_test()
-    main()
-
-    # End of program
-    # sys.stdout.close()
-    # sys.stdout = sys.__stdout__
-    # os.rename("/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/train_models_by_task_dryrun_temp.log", "/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/train_models_by_task_dryrun.log")
-        
+    main()        
     

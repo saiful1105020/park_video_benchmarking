@@ -1,3 +1,8 @@
+"""
+Based on logs extracted from Weights & Biases,
+This script automatically generates the table for reporting task-wise performance of best models.
+In this version, we use normal approximation method to estimate 95% CI
+"""
 import pandas as pd
 import numpy as np
 import os, sys
@@ -7,9 +12,18 @@ import regex as re
 import ast
 import json
 
-wandb_results_path = "/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/wandb_results/wandb_runs_summary_single_view_top_100.csv"
-summary_results_path = "/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/wandb_results/summary_best_models_per_task_v2.csv"
-latex_path = "/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/latex/summary_best_models_per_task_v2_final_with_CI.tex"
+with open("../wandb_username.txt", "r") as f:
+    wandb_username = f.read().strip()
+
+with open("../project_name.txt", "r") as f:
+    project_name = f.read().strip()
+
+with open("../project_dir.txt", "r") as f:
+    project_dir = f.read().strip()
+    
+wandb_results_path = f"/localdisk1/{project_dir}/{project_name}/results/R2_Task_Screening_Performance/wandb_results/wandb_runs_summary_single_view_top_100.csv"
+summary_results_path = f"/localdisk1/{project_dir}/{project_name}/results/R2_Task_Screening_Performance/wandb_results/summary_best_models_per_task_v2.csv"
+latex_path = f"/localdisk1/{project_dir}/{project_name}/results/R2_Task_Screening_Performance/latex/summary_best_models_per_task_v2_final_with_CI.tex"
 model_name_for_display = {
     "VideoMAE": "VideoMAE",
     "ViViT": "ViViT",
@@ -20,6 +34,10 @@ model_name_for_display = {
     "VJEPA2_SSV2": "VJEPA2-SSv2"
 }
 
+"""
+We forgot to save some important metrics in W&B tables.
+Need to retrieve those numbers from the log files
+"""
 def extract_dicts_from_log(log_data, key_name):
     # Pattern to find everything between curly braces (non-nested)
     matches = re.findall(r"\{(?:[^{}]|(?R))*\}", log_data, re.DOTALL)
@@ -30,11 +48,11 @@ def extract_dicts_from_log(log_data, key_name):
 
 def load_wandb_log(run_id):
     api = wandb.Api()
-    run = api.run(f"mislam6/park_video_benchmarking_v1/{run_id}")
+    run = api.run(f"{wandb_username}/{project_name}_v1/{run_id}")
     file = run.file("output.log")
-    file.download("/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/wandb_results/temp_run_logs", replace=True)
+    file.download(f"/localdisk1/{project_dir}/{project_name}/results/R2_Task_Screening_Performance/wandb_results/temp_run_logs", replace=True)
 
-    with open("/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/wandb_results/temp_run_logs/output.log", "r") as f:
+    with open(f"/localdisk1/{project_dir}/{project_name}/results/R2_Task_Screening_Performance/wandb_results/temp_run_logs/output.log", "r") as f:
         log_data = f.read()
         metrics_dict = extract_dicts_from_log(log_data, "metrics")
     return metrics_dict
@@ -97,10 +115,10 @@ def summarize_wandb_results(wandb_results_path):
 
 if __name__ == "__main__":
     # Stage 1
-    # summary_df = summarize_wandb_results(wandb_results_path)
-    # print("Summary of Best Models per Task:")
-    # print(summary_df)
-    # summary_df.to_csv(summary_results_path, index=False)
+    summary_df = summarize_wandb_results(wandb_results_path)
+    print("Summary of Best Models per Task:")
+    print(summary_df)
+    summary_df.to_csv(summary_results_path, index=False)
 
     # Stage 2
     summary_df = pd.read_csv(summary_results_path)
