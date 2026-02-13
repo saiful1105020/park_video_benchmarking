@@ -4,17 +4,17 @@
 <ul>
   <li><b>Cleanup</b> contains some bookkeeping code to clean up wandb run details.</li>
 
-  <li>```R1_Dataset``` --> codes for generating dataset descriptions, including demographic distributions.</li>
+  <li><b>R1_Dataset</b> contains codes for generating dataset descriptions, including demographic distributions.</li>
 
-  <li>```R2_Task_...``` --> codes for training single and multi view models without oversampling. This also contains code to automatically read wandb results, select the best model, re-run that model with 30 random seeds, and generate 95\% confidence intervals. All the results are automatically saved as Latex tables, which directly presented in the paper (with some formatting adjustment).</li>
+  <li><b>R2_Task_...</b> contains codes for training single and multi view models without oversampling. This also contains code to automatically read wandb results, select the best model, re-run that model with 30 random seeds, and generate 95\% confidence intervals. All the results are automatically saved as Latex tables, which directly presented in the paper (with some formatting adjustment).</li>
 
-  <li>```R3_Screening_...``` --> Very similar to the last setup (R2), but this time we are using oversampling as our dataset is slightly imbalanced.</li>
+  <li><b>R3_Screening_...</b> --> Very similar to the last setup (R2), but this time we are using oversampling as our dataset is slightly imbalanced.</li>
 
-  <li>```R4_Model_...``` --> This generate the model comparsion figure we have provided in the paper.</li>
+  <li><b>R4_Model_...</b> --> This generate the model comparsion figure we have provided in the paper.</li>
 
-  <li>```Utils``` contains some library codes that is used throughout the repository.</li>
+  <li><b>Utils</b> contains some library codes that is used throughout the repository.</li>
 
-  <li>```VFMs``` contains the instructions for downloading pre-trained weights and extracting frozen embeddings for the models we have experimented with. Please refer to the README files for each specific model for details.</li>
+  <li><b>VFMs</b> contains the instructions for downloading pre-trained weights and extracting frozen embeddings for the models we have experimented with. Please refer to the README files for each specific model for details.</li>
 </ul>
 
 ## Data
