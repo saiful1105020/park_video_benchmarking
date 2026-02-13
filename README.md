@@ -1,4 +1,4 @@
-### Navigating this Repository
+# Navigating this Repository
 
 ## Code
 <ul>
@@ -22,7 +22,7 @@ Contains necessary metadata, including PD/Non-PD labels, PD stage, and countries
 
 This folder should also contain the frozen embeddings, which are currently absent due to GitHub size limit (details below).
 
-# Frozen Embeddings for Running Benchmark
+### Frozen Embeddings for Running Benchmark
 Since the frozen embeddings from all the videos are large in size, we have uploaded the data in the Box folder.
 These data are not available in GitHub.
 Please download necessary data from this Box folder, and replace the data/ folder.
@@ -34,7 +34,9 @@ Please download necessary data from this Box folder, and replace the data/ folde
 ## Results
 Contains the figures and tables used in the paper.
 
-### Video Foundation Model Configurations and Sizes
+---
+
+# Video Foundation Model Configurations and Sizes
 
 For reproducibility of our work, we report the Hugging Face (HF) or relevant model identifier (or checkpoint name), input image dimension, number of frames per view, feature embedding dimension, and model size in parameters.
 
@@ -50,7 +52,7 @@ For reproducibility of our work, we report the Hugging Face (HF) or relevant mod
 
 ---
 
-### Hyperparameter Search using Weights and Biases
+# Hyperparameter Search using Weights and Biases
 
 This project uses Weights & Biases (W&B) to automate the search for optimal hyperparameters. We focus on maximizing dev_auroc for 16 tasks across multiple video architectures.
 
