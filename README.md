@@ -94,6 +94,7 @@ parameters:
     value: [0 (single-view) | -1 (multi-view)]
 ```
 🚀 Quick Start: Running the Sweep
+
 Initialize the Sweep (Bash):
 ```
 wandb sweep sweep_config.yaml
