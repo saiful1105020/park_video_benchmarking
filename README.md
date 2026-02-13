@@ -14,6 +14,15 @@ For reproducibility of our work, we report the Hugging Face (HF) or relevant mod
 
 ---
 
+### Frozen Embeddings for Running Benchmark
+Since the frozen embeddings from all the videos are large in size, we have uploaded the data in the Box folder.
+These data are not available in GitHub.
+Please download necessary data from this Box folder, and replace the data/ folder.
+<!--https://rochester.box.com/s/utw6cxrodcixenks1dxfbo9kagal7djp-->
+```
+<URL redacted to maintain institutional anonymity -- will be made available upon paper acceptance>
+```
+
 ### Hyperparameter Search using Weights and Biases
 
 This project uses Weights & Biases (W&B) to automate the search for optimal hyperparameters. We focus on maximizing dev_auroc for 16 tasks across multiple video architectures.
