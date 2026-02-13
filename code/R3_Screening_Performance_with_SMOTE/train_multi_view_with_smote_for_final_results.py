@@ -7,26 +7,29 @@ import wandb
 import random
 import pandas as pd
 import json
-
 import numpy as np
 from imblearn.over_sampling import RandomOverSampler
-
 import torch
 from torch.utils.data import Dataset, DataLoader
-
 from tqdm import tqdm
-
 import matplotlib.pyplot as plt
-
 from models import *
 
+with open("../wandb_username.txt", "r") as f:
+    wandb_username = f.read().strip()
 
-sys.path.append("/localdisk1/PARK/park_video_benchmarking/code/Utils")
+with open("../project_name.txt", "r") as f:
+    project_name = f.read().strip()
+
+with open("../project_dir.txt", "r") as f:
+    project_dir = f.read().strip()
+
+sys.path.append(f"/localdisk1/{project_dir}/{project_name}/code/Utils")
 from file_path_labels import *
 from get_static_embeddings import *
 from calculate_performance_metrics import *
 
-wandb_temp_path = "/localdisk1/PARK/park_video_benchmarking/results/R3_Screening_Performance_with_SMOTE/wandb_results/temp_run_logs"
+wandb_temp_path = f"/localdisk1/{project_dir}/{project_name}/results/R3_Screening_Performance_with_SMOTE/wandb_results/temp_run_logs"
 if not os.path.exists(wandb_temp_path):
     os.makedirs(wandb_temp_path)
 
@@ -347,7 +350,7 @@ def main(**cfg):
     # need to setup wandb and hyper-parameter tuning
     ENABLE_WANDB = cfg["enable_wandb"]
     if ENABLE_WANDB:
-        wandb.init(project="park_video_benchmarking_v1", config=cfg)
+        wandb.init(project=f"{project_name}_v1", config=cfg)
     '''
     Ensure reproducibility of randomness
     '''
@@ -511,10 +514,3 @@ def unit_test():
 if __name__ == "__main__":
     # unit_test()
     main()
-
-    # End of program
-    # sys.stdout.close()
-    # sys.stdout = sys.__stdout__
-    # os.rename("/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/train_models_by_task_dryrun_temp.log", "/localdisk1/PARK/park_video_benchmarking/results/R2_Task_Screening_Performance/train_models_by_task_dryrun.log")
-        
-    

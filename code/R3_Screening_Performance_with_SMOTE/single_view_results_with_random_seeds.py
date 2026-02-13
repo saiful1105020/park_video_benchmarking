@@ -8,9 +8,18 @@ import ast
 import json
 import torch
 
-wandb_results_path = "/localdisk1/PARK/park_video_benchmarking/results/R3_Screening_Performance_with_SMOTE/wandb_results/wandb_runs_summary_single_view_top_100.csv"
-summary_results_path = "/localdisk1/PARK/park_video_benchmarking/results/R3_Screening_Performance_with_SMOTE/wandb_results/summary_best_models_per_task_with_random_seeds.csv"
-latex_path = "/localdisk1/PARK/park_video_benchmarking/results/R3_Screening_Performance_with_SMOTE/latex/summary_best_models_per_task_with_random_seeds_final_with_CI_random_seeds.tex"
+with open("../wandb_username.txt", "r") as f:
+    wandb_username = f.read().strip()
+
+with open("../project_name.txt", "r") as f:
+    project_name = f.read().strip()
+
+with open("../project_dir.txt", "r") as f:
+    project_dir = f.read().strip()
+
+wandb_results_path = f"/localdisk1/{project_dir}/{project_name}/results/R3_Screening_Performance_with_SMOTE/wandb_results/wandb_runs_summary_single_view_top_100.csv"
+summary_results_path = f"/localdisk1/{project_dir}/{project_name}/results/R3_Screening_Performance_with_SMOTE/wandb_results/summary_best_models_per_task_with_random_seeds.csv"
+latex_path = f"/localdisk1/{project_dir}/{project_name}/results/R3_Screening_Performance_with_SMOTE/latex/summary_best_models_per_task_with_random_seeds_final_with_CI_random_seeds.tex"
 
 if not os.path.exists(os.path.dirname(latex_path)):
     os.makedirs(os.path.dirname(latex_path), exist_ok=True)
@@ -74,13 +83,13 @@ def summarize_wandb_results(wandb_results_path):
         results = []
         for seed in random_seeds:
             params["seed"] = seed
-            python_command = "python /localdisk1/PARK/park_video_benchmarking/code/R3_Screening_Performance_with_SMOTE/train_single_view_with_smote_for_final_results.py"
+            python_command = f"python /localdisk1/{project_dir}/{project_name}/code/R3_Screening_Performance_with_SMOTE/train_single_view_with_smote_for_final_results.py"
             cmd = f"{python_command} {' '.join([f'--{k}={v}' for k, v in params.items()])}"
             print(f"Running command: {cmd}")
             status = os.system(cmd)
 
             result_file = os.path.join(
-                "/localdisk1/PARK/park_video_benchmarking/results/R3_Screening_Performance_with_SMOTE/wandb_results/temp_run_logs",
+                f"/localdisk1/{project_dir}/{project_name}/results/R3_Screening_Performance_with_SMOTE/wandb_results/temp_run_logs",
                 f"wandb_logs_{params['task_name']}_model_{params['model']}_view{params['view_index']}_seed{seed}.json"
             )
             if os.path.exists(result_file):
@@ -90,7 +99,7 @@ def summarize_wandb_results(wandb_results_path):
         
         # Save detailed results for each task and best model
         results_df = pd.DataFrame(results)
-        results_df.to_csv(f"/localdisk1/PARK/park_video_benchmarking/results/R3_Screening_Performance_with_SMOTE/wandb_results/detailed_results_single_view_{task}_model_{best_model}.csv", index=False)
+        results_df.to_csv(f"/localdisk1/{project_dir}/{project_name}/results/R3_Screening_Performance_with_SMOTE/wandb_results/detailed_results_single_view_{task}_model_{best_model}.csv", index=False)
 
         n = results_df["test_samples"].mean()
         n_positives = results_df["test_positives"].mean()
@@ -135,7 +144,7 @@ if __name__ == "__main__":
         # read back results for 30 random seeds
         model = summary_df[summary_df["Task"]==task]["Best Model"].values[0]
         task_str = task.lower().replace(" ", "_")
-        task_result_path = f"/localdisk1/PARK/park_video_benchmarking/results/R3_Screening_Performance_with_SMOTE/wandb_results/detailed_results_single_view_{task_str}_model_{model_name_from_display[model]}.csv"
+        task_result_path = f"/localdisk1/{project_dir}/{project_name}/results/R3_Screening_Performance_with_SMOTE/wandb_results/detailed_results_single_view_{task_str}_model_{model_name_from_display[model]}.csv"
         df_task = pd.read_csv(task_result_path)
 
         summary_row = {

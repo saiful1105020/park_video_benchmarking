@@ -1,8 +1,21 @@
+"""
+This script is used to automatically extract performance metrics from
+hyper-parameter sweep that is set up with Weights & Biases
+"""
 import pandas as pd
 import wandb
 from tqdm import tqdm
 import os
 api = wandb.Api()
+
+with open("../wandb_username.txt", "r") as f:
+    wandb_username = f.read().strip()
+
+with open("../project_name.txt", "r") as f:
+    project_name = f.read().strip()
+
+with open("../project_dir.txt", "r") as f:
+    project_dir = f.read().strip()
 
 sweep_ids = [
     "9fx4cgkk", "x537bnql", "klk4gap8", "cout9wcc", "q8fdim5o", "wz7d08ip", "kaa6k9bz",
@@ -10,7 +23,7 @@ sweep_ids = [
     "mvefk8a9", "xpn8xadd", "6qommi3e"
     ]
 
-save_path = "/localdisk1/PARK/park_video_benchmarking/code/R3_Screening_Performance_with_SMOTE/wandb_results/wandb_runs_summary_single_view_all_runs.csv"
+save_path = f"/localdisk1/{project_dir}/{project_name}/code/R3_Screening_Performance_with_SMOTE/wandb_results/wandb_runs_summary_single_view_all_runs.csv"
 if not os.path.exists(save_path):
     os.makedirs(os.path.dirname(save_path), exist_ok=True)
 
@@ -22,7 +35,7 @@ for sweep_id in sweep_ids:
     # Sort by a summary metric (prefix with 'summary_metrics.')
     # Use '+' for ascending, '-' for descending
     runs = api.runs(
-        "mislam6/park_video_benchmarking_v1",
+        f"{wandb_username}/{project_name}_v1",
         filters={"sweep": sweep_id},
         per_page=100,
         order="-summary_metrics.dev_auroc"
