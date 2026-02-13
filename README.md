@@ -19,6 +19,7 @@ For reproducibility of our work, we report the Hugging Face (HF) or relevant mod
 This project uses Weights & Biases (W&B) to automate the search for optimal hyperparameters. We focus on maximizing dev_auroc for 16 tasks across multiple video architectures.
 
 ## sweep_config.yaml
+```
 program: train_multi_view_models_by_task.py
 method: random
 metric:
@@ -82,10 +83,14 @@ parameters:
     value: 4
   view_index:
     value: -1
-
+```
 🚀 Quick Start: Running the Sweep
 Initialize the Sweep (Bash):
+```
 wandb sweep sweep_config.yaml
+```
 
 Start an Agent (Bash):
+```
 wandb agent <sweep_id>
+```
