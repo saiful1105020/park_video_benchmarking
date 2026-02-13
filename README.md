@@ -80,9 +80,9 @@ parameters:
 
   # Data Config
   num_views:
-    value: 4
+    value: [1 (single-view) | 4 (multi-view)]
   view_index:
-    value: -1
+    value: [0 (single-view) | -1 (multi-view)]
 ```
 🚀 Quick Start: Running the Sweep
 Initialize the Sweep (Bash):
