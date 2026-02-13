@@ -11,3 +11,4 @@ code/wandb_username.txt
 code/R5_Multi_Task_Fusion/*
 results/R5_MultiTask/*
 results/*/log*
+results/*/*.log
