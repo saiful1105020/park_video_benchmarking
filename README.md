@@ -2,7 +2,7 @@
 
 ## Code
 <ul>
-  <li>```Cleanup``` contains some bookkeeping code to clean up wandb run details.</li>
+  <li><b>Cleanup</b> contains some bookkeeping code to clean up wandb run details.</li>
 
   <li>```R1_Dataset``` --> codes for generating dataset descriptions, including demographic distributions.</li>
 
