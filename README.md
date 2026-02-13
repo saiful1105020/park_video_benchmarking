@@ -17,6 +17,17 @@
   <li><b>VFMs</b> contains the instructions for downloading pre-trained weights and extracting frozen embeddings for the models we have experimented with. Please refer to the README files for each specific model for details.</li>
 </ul>
 
+### Note 
+The ```code/``` folder expects three text files:
+```project_dir.txt```, ```project_name.txt```, ```wandb_username.txt``` -- each containing a string indicating the parent project directory, project's name, and the username in wandb.ai. These files are not included in this GitHub repo to comply with anonymization requirements.
+You can re-create these text files using the following bash commands inside the ```code/``` folder.
+
+```
+echo "[PROJECT_DIR]" > project_dir.txt
+echo "[PROJECT_NAME]" > project_name.txt
+echo "[WANDB_USERNAME]" > wandb_username.txt
+```
+
 ## Data
 Contains necessary metadata, including PD/Non-PD labels, PD stage, and countries from where participants are recruited.
 
