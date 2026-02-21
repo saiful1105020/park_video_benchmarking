@@ -4,8 +4,20 @@ from split_ids import *
 import torch
 import pandas as pd
 
-METADATA_FILE_PATH = "/localdisk1/PARK/park_video_benchmarking/data/metadata/cleaned_file_user_metadata.csv"
-RAW_VIDEOS_PATH = "/localdisk1/PARK/park_video_benchmarking/data/videos/raw_videos"
+with open("../wandb_username.txt", "r") as f:
+    wandb_username = f.read().strip()
+
+with open("../project_name.txt", "r") as f:
+    project_name = f.read().strip()
+
+with open("../project_dir.txt", "r") as f:
+    project_dir = f.read().strip()
+
+with open("../protocol_name.txt", "r") as f:
+    protocol_name = f.read().strip()
+
+METADATA_FILE_PATH = f"/localdisk1/{project_dir}/{project_name}/data/metadata/cleaned_file_user_metadata.csv"
+RAW_VIDEOS_PATH = f"/localdisk1/{project_dir}/{project_name}/data/videos/raw_videos"
 
 task_name_mapping = {
     'sustained_phonation_a': ['ahhhh'],

@@ -8,7 +8,9 @@ results/*/wandb_results/*/*.json
 code/project_dir.txt
 code/project_name.txt
 code/wandb_username.txt
+code/protocol_name.txt
 code/R5_Multi_Task_Fusion/*
 results/R5_MultiTask/*
 results/*/log*
 results/*/*.log
+results/*/wandb_results/*/*.log

@@ -1,12 +1,20 @@
 import pickle
 import pandas as pd
+import os
 
-# embedding_saved_path = "/localdisk4/Ekram/VideoEncoderProject/datasets/videomae_v2/VideoMAEv2/VideoMAEv2_Features_All_PARK_Videos.pkl"
-# embedding_saved_path = "/localdisk4/Ekram/VideoEncoderProject/datasets/vivit_based_features/raw_features/ViViT_Features_All_PARK_Videos.pkl"
-# embedding_saved_path = "/localdisk4/Ekram/VideoEncoderProject/datasets/videoprism_large/VideoPrism/VideoPrism_Features_All_PARK_Videos.pkl"
-# embedding_saved_path = "/localdisk4/Ekram/VideoEncoderProject/datasets/vjepa2_based_features/raw_based_features/VJEPA2_Features_All_PARK_Videos.pkl"
-# embedding_saved_path = "/localdisk4/Ekram/VideoEncoderProject/datasets/vjepa2_vitg384/VJEPA2/VJEPA2_Features_All_PARK_Videos.pkl"
-embedding_saved_path = "/localdisk1/PARK/park_video_benchmarking/data/single_view_embeddings/ViViT/ViViT_Features_All_PARK_Videos.pkl"
+with open("../wandb_username.txt", "r") as f:
+    wandb_username = f.read().strip()
+
+with open("../project_name.txt", "r") as f:
+    project_name = f.read().strip()
+
+with open("../project_dir.txt", "r") as f:
+    project_dir = f.read().strip()
+
+with open("../protocol_name.txt", "r") as f:
+    protocol_name = f.read().strip()
+
+embedding_saved_path = f"/localdisk1/{project_dir}/{project_name}/data/single_view_embeddings/ViViT/ViViT_Features_All_{project_dir}_Videos.pkl"
 
 pooling = "mean"
 with open(embedding_saved_path, 'rb') as f:

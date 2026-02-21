@@ -18,6 +18,9 @@ with open("../project_name.txt", "r") as f:
 with open("../project_dir.txt", "r") as f:
     project_dir = f.read().strip()
 
+with open("../protocol_name.txt", "r") as f:
+    protocol_name = f.read().strip()
+
 import sys
 sys.stdout.flush()
 sys.stdout=open(f"/localdisk1/{project_dir}/{project_name}/results/R1_Dataset/general_statistics_temp.log", "wt")
@@ -232,9 +235,9 @@ def clean_data():
     print(f"[METADATA] Number of videos after filtering non-existing videos: {data_df.shape[0]}")
     newline()
 
-    # Correct Participant_ID for ParkTest
+    # Correct Participant_ID for {protocol_name}
     print(f"Number of unique Participant_IDs before correction: {data_df['Participant_ID'].nunique()}")
-    data_df.loc[data_df['Protocol']=='ParkTest', 'Participant_ID'] = data_df.loc[data_df['Protocol']=='ParkTest', 'Participant_ID'].apply(lambda x: x.split('-')[-1])
+    data_df.loc[data_df['Protocol']==protocol_name, 'Participant_ID'] = data_df.loc[data_df['Protocol']==protocol_name, 'Participant_ID'].apply(lambda x: x.split('-')[-1])
     print(f"Number of unique Participant_IDs after correction: {data_df['Participant_ID'].nunique()}")
 
     # Extract date and time from filename and add as new columns

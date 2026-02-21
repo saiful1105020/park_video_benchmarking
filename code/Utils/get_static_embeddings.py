@@ -3,26 +3,38 @@ import pickle
 import torch
 import pandas as pd
 
+with open("../wandb_username.txt", "r") as f:
+    wandb_username = f.read().strip()
+
+with open("../project_name.txt", "r") as f:
+    project_name = f.read().strip()
+
+with open("../project_dir.txt", "r") as f:
+    project_dir = f.read().strip()
+
+with open("../protocol_name.txt", "r") as f:
+    protocol_name = f.read().strip()
+
 
 model_embedding_paths = {
-    "ViViT": "/localdisk1/PARK/park_video_benchmarking/data/single_view_embeddings/ViViT/ViViT_Features_All_PARK_Videos.pkl",
-    "VideoMAE": "/localdisk1/PARK/park_video_benchmarking/data/single_view_embeddings/VideoMAE/VideoMAE_Features_All_PARK_Videos.pkl",
-    "TimeSformer": "/localdisk1/PARK/park_video_benchmarking/data/single_view_embeddings/TimeSformer/TimeSformer_Features_All_PARK_Videos.pkl",
-    "VideoPrism": "/localdisk1/PARK/park_video_benchmarking/data/single_view_embeddings/VideoPrism/VideoPrism_Features_All_PARK_Videos.pkl",
-    "VideoMAEv2": "/localdisk1/PARK/park_video_benchmarking/data/single_view_embeddings/VideoMAEv2/VideoMAEv2_Features_All_PARK_Videos.pkl",
-    "VJEPA2": "/localdisk1/PARK/park_video_benchmarking/data/single_view_embeddings/VJEPA2/VJEPA2_Features_All_PARK_Videos.pkl",
-    "VJEPA2_SSV2": "/localdisk1/PARK/park_video_benchmarking/data/single_view_embeddings/VJEPA2_SSV2/VJEPA2_Features_All_PARK_Videos.pkl"
+    "ViViT": f"/localdisk1/{project_dir}/{project_name}/data/single_view_embeddings/ViViT/ViViT_Features_All_{project_dir}_Videos.pkl",
+    "VideoMAE": f"/localdisk1/{project_dir}/{project_name}/data/single_view_embeddings/VideoMAE/VideoMAE_Features_All_{project_dir}_Videos.pkl",
+    "TimeSformer": f"/localdisk1/{project_dir}/{project_name}/data/single_view_embeddings/TimeSformer/TimeSformer_Features_All_{project_dir}_Videos.pkl",
+    "VideoPrism": f"/localdisk1/{project_dir}/{project_name}/data/single_view_embeddings/VideoPrism/VideoPrism_Features_All_{project_dir}_Videos.pkl",
+    "VideoMAEv2": f"/localdisk1/{project_dir}/{project_name}/data/single_view_embeddings/VideoMAEv2/VideoMAEv2_Features_All_{project_dir}_Videos.pkl",
+    "VJEPA2": f"/localdisk1/{project_dir}/{project_name}/data/single_view_embeddings/VJEPA2/VJEPA2_Features_All_{project_dir}_Videos.pkl",
+    "VJEPA2_SSV2": f"/localdisk1/{project_dir}/{project_name}/data/single_view_embeddings/VJEPA2_SSV2/VJEPA2_Features_All_{project_dir}_Videos.pkl"
 }
 
 model_embedding_paths_multiview = {
     4: {
-        "ViViT": "/localdisk1/PARK/park_video_benchmarking/data/multi_view_embeddings/ViViT/ViViT_4views_2stride_Features_All_PARK_Videos.pkl",
-        "VideoMAE": "/localdisk1/PARK/park_video_benchmarking/data/multi_view_embeddings/VideoMAE/VideoMAE_4views_2stride_Features_All_PARK_Videos.pkl",
-        "TimeSformer": "/localdisk1/PARK/park_video_benchmarking/data/multi_view_embeddings/TimeSformer/TimeSformer_4views_2stride_Features_All_PARK_Videos.pkl",
-        "VideoPrism": "/localdisk1/PARK/park_video_benchmarking/data/multi_view_embeddings/VideoPrism/VideoPrism_4views_2stride_Features_All_PARK_Videos.pkl",
-        "VJEPA2": "/localdisk1/PARK/park_video_benchmarking/data/multi_view_embeddings/VJEPA2/VJEPA2_basic_4views_2stride_Features_All_PARK_Videos.pkl",
-        "VJEPA2_SSV2": "/localdisk1/PARK/park_video_benchmarking/data/multi_view_embeddings/VJEPA2_SSV2/VJEPA2_ssv2_4views_2stride_Features_All_PARK_Videos.pkl",
-        "VideoMAEv2": "/localdisk1/PARK/park_video_benchmarking/data/multi_view_embeddings/VideoMAEv2/VideoMAEv2_4views_2stride_Features_All_PARK_Videos.pkl"
+        "ViViT": f"/localdisk1/{project_dir}/{project_name}/data/multi_view_embeddings/ViViT/ViViT_4views_2stride_Features_All_{project_dir}_Videos.pkl",
+        "VideoMAE": f"/localdisk1/{project_dir}/{project_name}/data/multi_view_embeddings/VideoMAE/VideoMAE_4views_2stride_Features_All_{project_dir}_Videos.pkl",
+        "TimeSformer": f"/localdisk1/{project_dir}/{project_name}/data/multi_view_embeddings/TimeSformer/TimeSformer_4views_2stride_Features_All_{project_dir}_Videos.pkl",
+        "VideoPrism": f"/localdisk1/{project_dir}/{project_name}/data/multi_view_embeddings/VideoPrism/VideoPrism_4views_2stride_Features_All_{project_dir}_Videos.pkl",
+        "VJEPA2": f"/localdisk1/{project_dir}/{project_name}/data/multi_view_embeddings/VJEPA2/VJEPA2_basic_4views_2stride_Features_All_{project_dir}_Videos.pkl",
+        "VJEPA2_SSV2": f"/localdisk1/{project_dir}/{project_name}/data/multi_view_embeddings/VJEPA2_SSV2/VJEPA2_ssv2_4views_2stride_Features_All_{project_dir}_Videos.pkl",
+        "VideoMAEv2": f"/localdisk1/{project_dir}/{project_name}/data/multi_view_embeddings/VideoMAEv2/VideoMAEv2_4views_2stride_Features_All_{project_dir}_Videos.pkl"
     }
 }
 
