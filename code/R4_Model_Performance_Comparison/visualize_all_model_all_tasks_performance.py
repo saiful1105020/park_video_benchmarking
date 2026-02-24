@@ -284,9 +284,25 @@ def plot_cluster_boxes_clean_x(
     cluster_task_legends = []
     y_anchor = -0.18   # vertical position under the x-axis (tune if needed)
 
+    start_x = 0.18  # Adjust based on your first box
+
+    # The fixed distance between the centers of each box
+    spacing = {
+        0: 0.25,
+        1: 0.24,
+        2: 0.26,
+        3: 0.25
+    }
+    
+    cluster_index = 0
+    space = 0
+
     for cluster_name, content in cluster_results.items():
         tasks = content["tasks"]
 
+        x_pos = start_x + space
+        space += spacing[cluster_index]
+        
         handles = [
             plt.Line2D(
                 [0], [0],
@@ -300,19 +316,38 @@ def plot_cluster_boxes_clean_x(
             for t in tasks
         ]
 
+        # leg = ax.legend(
+        #     handles=handles,
+        #     ncol=1 if len(handles) <= 3 else 2,   # auto 1/2 columns per cluster
+        #     loc="upper center",
+        #     bbox_to_anchor=(xdata_to_axfrac(cluster_centers[cluster_name]), y_anchor),
+        #     frameon=True,
+        #     fontsize=14,
+        #     handletextpad=0.6,
+        #     columnspacing=1.0,
+        #     borderaxespad=0.0,
+        # )
+
         leg = ax.legend(
             handles=handles,
             ncol=1 if len(handles) <= 3 else 2,   # auto 1/2 columns per cluster
             loc="upper center",
-            bbox_to_anchor=(xdata_to_axfrac(cluster_centers[cluster_name]), y_anchor),
-            frameon=False,
+            bbox_to_anchor=(x_pos, y_anchor),
+            frameon=True,
             fontsize=14,
             handletextpad=0.6,
-            columnspacing=1.2,
+            columnspacing=1.0,
             borderaxespad=0.0,
         )
+        
+        # Modify the frame's line style
+        frame = leg.get_frame()
+        frame.set_linestyle('--')  # Options: '--', 'dashed', 'dotted', etc.
+        frame.set_edgecolor('black') # Optional: ensure the color is visible
+
         ax.add_artist(leg)
         cluster_task_legends.append(leg)
+        cluster_index += 1
 
     # Increase bottom margin to make room for per-cluster legends
     fig.subplots_adjust(top=0.82, bottom=0.32)
