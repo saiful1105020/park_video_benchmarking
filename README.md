@@ -18,14 +18,18 @@
 </ul>
 
 ### Note 
-The ```code/``` folder expects three text files:
-```project_dir.txt```, ```project_name.txt```, ```wandb_username.txt``` -- each containing a string indicating the parent project directory, project's name, and the username in wandb.ai. These files are not included in this GitHub repo to comply with anonymization requirements.
-You can re-create these text files using the following bash commands inside the ```code/``` folder.
+The ```code/``` folder expects four text files:
+```project_dir.txt```, ```project_name.txt```, ```wandb_username.txt```, and ```protocol_name.txt``` -- each containing a string indicating the parent project directory, project's name, the username in wandb.ai, and the name of an internal study protocol. These files are not included in this GitHub repo to comply with anonymization requirements.
+
+The repository will be updated to include these files upon manuscript acceptance.
+
+You can re-create these text files with ```[dummy_values]``` using the following bash commands inside the ```code/``` folder.
 
 ```
 echo "[PROJECT_DIR]" > project_dir.txt
 echo "[PROJECT_NAME]" > project_name.txt
 echo "[WANDB_USERNAME]" > wandb_username.txt
+echo "[PROTOCOL_NAME]" > protocol_name.txt
 ```
 
 ## Data
