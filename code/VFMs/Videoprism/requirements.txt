@@ -1,0 +1,13 @@
+numpy==2.2.6
+av==15.1.0
+click==8.3.0
+tqdm==4.67.1
+pillow==11.3.0
+# VideoPrism + JAX (GPU)
+videoprism==1.0.0
+jax==0.6.2
+jaxlib==0.6.2
+jax-cuda12-plugin==0.6.2
+jax-cuda12-pjrt==0.6.2
+# cuDNN runtime (must match JAX build expectations)
+nvidia-cudnn-cu12==9.8.0.87
