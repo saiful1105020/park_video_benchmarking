@@ -41,10 +41,10 @@ This folder should also contain the frozen embeddings, which are currently absen
 Since the frozen embeddings from all the videos are large in size, we have uploaded the data in the Box folder.
 These data are not available in GitHub.
 Please download necessary data from this Box folder, and replace the data/ folder.
-<!--https://rochester.box.com/s/utw6cxrodcixenks1dxfbo9kagal7djp-->
-```
-<URL redacted to maintain institutional anonymity -- will be made available upon paper acceptance>
-```
+
+<b>Download Embeddings:</b> 
+<a href="https://rochester.box.com/s/utw6cxrodcixenks1dxfbo9kagal7djp">Box Link</a>
+
 
 ## Results
 Contains the figures and tables used in the paper.
