@@ -53,11 +53,6 @@ Note that the size of these data might be quite large (~20 GB), so make sure you
 <b>Download MediaPipe Landmarks:</b> 
 <a href="https://rochester.box.com/s/f0d8n26j67pllxu6pjopmbroqdn16bz9">Box Link</a>
 
-
-/
-README_hand_keypoints.md
-
-
 ## Hand Keypoint Data
 
 The following data description was generated using ChatGPT. The description is verified by the authors. Please use the provided **Python** sample codes with caution.
