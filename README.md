@@ -50,10 +50,10 @@ We have also shared additional landmarks (frame-by-frame) for each video of this
 
 Note that the size of these data might be quite large (~20 GB), so make sure your downloader can resume if the download is paused for any reason.
 
-<b>Download MediaPipe Landmarks:</b> 
-<a href="https://rochester.box.com/s/f0d8n26j67pllxu6pjopmbroqdn16bz9">Box Link</a>
-
 ## Hand Keypoint Data
+
+<b>Download MediaPipe Hands Landmarks:</b> 
+<a href="https://rochester.box.com/s/etjgreohty39phhr4y68d9hnkg2hpx4a">Box Link</a>
 
 The following data description was generated using ChatGPT. The description is verified by the authors. Please use the provided **Python** sample codes with caution.
 
