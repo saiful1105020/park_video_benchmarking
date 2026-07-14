@@ -39,12 +39,21 @@ This folder should also contain the frozen embeddings, which are currently absen
 
 ### Frozen Embeddings for Running Benchmark
 Since the frozen embeddings from all the videos are large in size, we have uploaded the data in the Box folder.
-These data are not available in GitHub.
-Please download necessary data from this Box folder, and replace the data/ folder.
+These data are not available on GitHub.
+Please download the necessary data from this Box folder, and replace the data/ folder.
 
 <b>Download Embeddings:</b> 
 <a href="https://rochester.box.com/s/utw6cxrodcixenks1dxfbo9kagal7djp">Box Link</a>
 
+### Additional MediaPipe Landmarks
+We have also shared additional landmarks (frame-by-frame) for each video of this dataset (when landmarks were successfully extracted). Please consider the task as context to see whether the landmarks could be useful for your research. For example, in a facial expression task, hand landmarks may be uninformative (though they remain available in this repository).
+
+Note that the size of these data might be quite large (~20 GB), so make sure your downloader can resume if the download is paused for any reason.
+
+<b>Download MediaPipe Landmarks:</b> 
+<a href="https://rochester.box.com/s/f0d8n26j67pllxu6pjopmbroqdn16bz9">Box Link</a>
+
+We are actively uploading data. Please check again later in time if you do not find what you are looking for. Alternatively, you can also contact the authors for an update.
 
 ## Results
 Contains the figures and tables used in the paper.
