@@ -50,6 +50,13 @@ We have also shared additional landmarks (frame-by-frame) for each video of this
 
 Note that the size of these data might be quite large (~20 GB), so make sure your downloader can resume if the download is paused for any reason.
 
+## Face Landmarks Data
+
+<b>Download MediaPipe Face Landmarks</b>[download the .pdf file and rename the extension to .zip]:
+<a href="https://rochester.box.com/s/7ipdcagm8u7boufb3q7meeteoiqkl5uu">Box Link</a>
+
+The landmarks are compressed for storage efficiency. Use the <a href="https://github.com/saiful1105020/park_video_benchmarking/blob/main/code/R6_Data_Sharing/read_compressed_face_landmarks.py"> custom script </a> to read the coordinates.
+
 ## Hand Keypoint Data
 
 <b>Download MediaPipe Hands Landmarks</b>[download the .pdf file and rename the extension to .zip]:
