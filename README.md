@@ -52,7 +52,7 @@ Note that the size of these data might be quite large (~20 GB), so make sure you
 
 ## Face Landmarks Data
 
-<b>Download MediaPipe Face Landmarks</b>[download the .pdf file and rename the extension to .zip]:
+<b>Download MediaPipe Face Landmarks</b>:
 <a href="https://rochester.box.com/s/7ipdcagm8u7boufb3q7meeteoiqkl5uu">Box Link</a>
 
 The landmarks are compressed for storage efficiency. Use the <a href="https://github.com/saiful1105020/park_video_benchmarking/blob/main/code/R6_Data_Sharing/read_compressed_face_landmarks.py"> custom script </a> to read the coordinates.
